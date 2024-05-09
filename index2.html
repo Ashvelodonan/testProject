@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, width=device-width">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+        <link href="/static/styles.css" type="text/css" rel="stylesheet">
+        <title>Arnis</title>
+    </head>
+
+    <body>
+
+        <nav class="bg-light border navbar navbar-expand-md navbar-light">
+            <div class="container-fluid">
+                <!-- <a class="navbar-brand" href="/"><span class="blue">C</span><span class="red">$</span><span class="yellow">5</span><span class="green">0</span> <span class="red">Arnis</span></a> -->
+                <button aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbar" data-bs-toggle="collapse" type="button">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbar">
+
+                        <!-- <ul class="navbar-nav me-auto mt-2">
+                            <li class="nav-item"><a class="nav-link" href="/templates/scoreboard.html">Scoreboard</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/history">History</a></li>
+                        </ul> -->
+                        <ul class="navbar-nav ms-auto mt-2">
+                            <!-- <li class="nav-item"><a class="nav-link">Welcome,</a></li> -->
+                            <!-- <div class="dropdown">
+                                <button class="btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="/addfunds">Add Cash</a></li>
+                                    <li><a class="dropdown-item" href="/changepassword">Change Password</a></li>
+                                    <div class="dropdown-divider"></div>
+                                    <li><a class="dropdown-item" href="/logout">Log Out</a></li>
+                                </ul>
+                            </div> -->
+                            <li class="nav-item"><a class="nav-link" href="/index.html">Log Out</a></li>
+                        </ul>
+
+                        <!-- <ul class="navbar-nav ms-auto mt-2">
+                            <li class="nav-item"><a class="nav-link" href="/register">Register</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/login">Log In</a></li>
+                        </ul> -->
+
+                </div>
+            </div>
+        </nav>
+
+
+            <header>
+                <!-- <div class="alert alert-primary mb-0 text-center" role="alert">
+
+                </div> -->
+            </header>
+
+
+        <main class="container py-5 text-center">
+            <table id="tablePartial" style="display:grid; !important;">
+                <tr>
+                    <td colspan="100%">
+                        <h3>Player Information and Partial Results</h3>
+                    </td>
+                </tr>
+                <tr>
+                    <td id="currentMatchData">
+                        <table style="display:grid; text-align:left !important;">
+                            <tr>
+                                <td>Player 1: <span id="fullname_red_current"></span></td>
+                                <td>Gender: <span id="gender_red_current"></span></td>
+                                <td>Weight: <span id="weight_red_current"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Player 2: <span id="fullname_blue_current"></span></td>
+                                <td>Gender: <span id="gender_blue_current"></span></td>
+                                <td>Weight: <span id="weight_blue_current"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Team 1: <span id="team_red_current"></span></td>
+                                <td>Category: <span id="category_current"></span></td>
+                                <td>Match No.: <span id="match_current"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Team 2: <span id="team_blue_current"></span></td>
+                                <td>Division: <span id="division_current"></span></td>
+                                <td>Court No.: <span id="court_current"></span></td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td id="winnersData">
+                        <table style="display:grid; text-align:left !important;">
+                            <tr>
+                                <th>Player</th>
+                                <th>Score</th>
+                                <th>Foul</th>
+                                <th>Disarm</th>
+                                <th>Advantage Point</th>
+                                <th>Winner</th>
+                            </tr>
+                            <tr>
+                                <td class="centerText" colspan="100%">Round 1</td>
+                            </tr>
+                            <tr>
+                                <td>Player 1</td>
+                                <td class="centerText"><span id="score1_R1"></span></td>
+                                <td class="centerText"><span id="foul1_R1"></span></td>
+                                <td class="centerText"><span id="disarm1_R1"></span></td>
+                                <td class="centerText"><span id="advPoint1_R1"></span></td>
+                                <td class="centerText"><span id="winner1_R1"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Player 2</td>
+                                <td class="centerText"><span id="score2_R1"></span></td>
+                                <td class="centerText"><span id="foul2_R1"></span></td>
+                                <td class="centerText"><span id="disarm2_R1"></span></td>
+                                <td class="centerText"><span id="advPoint2_R1"></span></td>
+                                <td class="centerText"><span id="winner2_R1"></span></td>
+                            </tr>
+                            <tr>
+                                <td class="centerText" colspan="100%">Round 2</td>
+                            </tr>
+                            <tr>
+                                <td>Player 1</td>
+                                <td class="centerText"><span id="score1_R2"></span></td>
+                                <td class="centerText"><span id="foul1_R2"></span></td>
+                                <td class="centerText"><span id="disarm1_R2"></span></td>
+                                <td class="centerText"><span id="advPoint1_R2"></span></td>
+                                <td class="centerText"><span id="winner1_R2"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Player 2</td>
+                                <td class="centerText"><span id="score2_R2"></span></td>
+                                <td class="centerText"><span id="foul2_R2"></span></td>
+                                <td class="centerText"><span id="disarm2_R2"></span></td>
+                                <td class="centerText"><span id="advPoint2_R2"></span></td>
+                                <td class="centerText"><span id="winner2_R2"></span></td>
+                            </tr>
+                            <tr>
+                                <td class="centerText" colspan="100%">Round 3</td>
+                            </tr>
+                            <tr>
+                                <td>Player 1</td>
+                                <td class="centerText"><span id="score1_R3"></span></td>
+                                <td class="centerText"><span id="foul1_R3"></span></td>
+                                <td class="centerText"><span id="disarm1_R3"></span></td>
+                                <td class="centerText"><span id="advPoint1_R3"></span></td>
+                                <td class="centerText"><span id="winner1_R3"></span></td>
+                            </tr>
+                            <tr>
+                                <td>Player 2</td>
+                                <td class="centerText"><span id="score2_R3"></span></td>
+                                <td class="centerText"><span id="foul2_R3"></span></td>
+                                <td class="centerText"><span id="disarm2_R3"></span></td>
+                                <td class="centerText"><span id="advPoint2_R3"></span></td>
+                                <td class="centerText"><span id="winner2_R3"></span></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+            <div style="float:left !important">
+                <button type="button" id="showHide">hide</button>
+            </div>
+            <hr />
+            <div id="table_contents">
+                <h3><span id="weight_category_selected"></span></h3>
+                <h1 class="displayVS"><span id="displayVS"></span></h1>
+                <table id="scoreboard_table">
+                    <tbody class="half-color">
+                    <tr id="scoreboard_table_row">
+                        <td id="left">
+                            <table id="leftcontent">
+                                <tbody>
+                                    <tr>
+                                        <th class="score_subtitle">Score A</th>
+                                    </tr>
+                                    <tr>
+                                        <input id="inputscore1" type="numeric" value="0">
+                                        <td class="red_team" id="score1">00</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <th class="red_team_adder" id="red_add">+</th>
+                                        <th class="red_team_adder" id="red_minus">-</th>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table>
+                                <tr>
+                                    <td class="advPoint">Advantage Point</td>
+                                </tr>
+                            </table>
+                            <table style="border-collapse:separate;">
+                                <tr class="advantage_points">
+                                    <td id="advPointA">R1</td>
+                                    <td id="advPointB">R2</td>
+                                    <td id="advPointC">R3</td>
+                                </tr>
+                            </table>
+                            <table>
+                                <tr>
+                                    <th>Player 1</th>
+                                </tr>
+                                <tr>
+                                    <td id="red_name"></td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td id="scoreboard_table_data">
+                        <div>
+                            <h6>minutes : seconds</h6>
+                            <iframe id="timer_outside" src="/static/scoreboard/timer.html" class="timer-frame" scrolling="no"></iframe>
+                        </div>
+                        <!-- main -->
+                            <button id="start_btn" type="button">Start</button>
+                            <button id="play_btn" type="button">Play</button>
+                            <button id="stop_btn" type="button">Stop</button>
+                            <button id="reset_btn" type="button">Reset</button>
+                            <table id="scoreboard_rounds">
+                                <tbody>
+                                <div class="score_title">
+                                    <tr>
+                                        <th class="score_subtitle">Round</th>
+                                        <th class="score_blank"></th>
+                                        <th class="score_subtitle">Round</th>
+                                        <th class="score_blank"></th>
+                                        <th class="score_subtitle">Round</th>
+                                    </tr>
+                                    <tr>
+                                        <td id="round1">1</td>
+                                        <td class="score_blank"></td>
+                                        <td id="round2">2</td>
+                                        <td class="score_blank"></td>
+                                        <td id="round3">3</td>
+                                    </tr>
+                                </div>
+                                </tbody>
+                            </table>
+                            <!-- <table id="scoreboard_scores">
+                                <div class="score_title">
+                                    <tr>
+                                        <th class="score_subtitle">Score A</th>
+                                        <th class="score_blank"></th>
+                                        <th class="score_subtitle">Score B</th>
+                                    </tr>
+                                    <tr>
+                                        <td class="red_team" id="score1">00</td>
+                                        <td class="score_blank">...</td>
+                                        <td class="blue_team" id="score2">00</td>
+                                    </tr>
+                                </div>
+                            </table>
+                            <table id="scoreboard_adder">
+                                <tr class="adders">
+                                    <th class="red_team_adder" id="red_add">+</th>
+                                    <th class="red_team_adder" id="red_minus">-</th>
+                                    <th class="score_blank">-.</th>
+                                    <th class="blue_team_adder" id="blue_add">+</th>
+                                    <th class="blue_team_adder" id="blue_minus">-</th>
+                                </tr>
+                            </table> -->
+                            <table id="scoreboard_fouls">
+                                <tbody>
+                                <div class="score_title">
+                                    <tr>
+                                        <th class="score_subtitle">foul A</th>
+                                        <th class="score_blank"></th>
+                                        <th class="score_subtitle">foul B</th>
+                                        <th class="score_blank"></th>
+                                        <th class="score_subtitle">foul C</th>
+                                        <th class="score_blank"></th>
+                                        <th class="score_subtitle">foul D</th>
+                                        <th class="score_blank"></th>
+                                        <th class="score_subtitle">foul E</th>
+                                        <th class="score_blank"></th>
+                                        <th class="score_subtitle">foul F</th>
+                                    </tr>
+                                    <tr>
+                                        <td class="red_team" id="foulA"></td>
+                                        <td class="score_blank"></td>
+                                        <td class="red_team" id="foulB"></td>
+                                        <td class="score_blank"></td>
+                                        <td class="red_team" id="foulC"></td>
+                                        <td class="score_blank">...</td>
+                                        <td class="blue_team" id="foulD"></td>
+                                        <td class="score_blank"></td>
+                                        <td class="blue_team" id="foulE"></td>
+                                        <td class="score_blank"></td>
+                                        <td class="blue_team" id="foulF"></td>
+                                    </tr>
+                                </div>
+                                </tbody>
+                            </table>
+                            <table id="scoreboard_disarm">
+                                <tbody>
+                                <div class="score_title">
+                                    <tr>
+                                        <th class="score_subtitle">disarm A</th>
+                                        <th class="score_blank"></th>
+                                        <th class="score_subtitle">disarm B</th>
+                                        <th class="score_blank"></th>
+                                        <th class="score_subtitle">disarm C</th>
+                                        <th class="score_blank"></th>
+                                        <th class="score_subtitle">disarm D</th>
+                                    </tr>
+                                    <tr>
+                                        <td class="red_team" id="disarmA"></td>
+                                        <td class="score_blank"></td>
+                                        <td class="red_team" id="disarmB"></td>
+                                        <td class="score_blank">...</td>
+                                        <td class="blue_team" id="disarmC"></td>
+                                        <td class="score_blank"></td>
+                                        <td class="blue_team" id="disarmD"></td>
+                                    </tr>
+                                </div>
+                                </tbody>
+                            </table>
+                            <table class="finalButtonsTable">
+                                <tr>
+                                    <td class="finalButtons"><button id="next_btn" type="button">Next</button></td>
+                                    <td class="finalButtons"><button id="save_btn" type="button">Save</button></td>
+                                </tr>
+                            </table>
+                        <!-- endmain -->
+                        </td>
+                        <td id="right">
+                            <table id="rightcontent">
+                                <tbody>
+                                    <tr>
+                                        <th class="score_subtitle">Score B</th>
+                                    </tr>
+                                    <tr>
+                                        <input id="inputscore2" type="numeric" value="0">
+                                        <td class="blue_team" id="score2">00</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <th class="blue_team_adder" id="blue_add">+</th>
+                                        <th class="blue_team_adder" id="blue_minus">-</th>
+                                    </tr>
+                                    <table>
+                                    <tr>
+                                        <td class="advPoint">Advantage Point</td>
+                                    </tr>
+                                    </table>
+                                    <table style="border-collapse:separate;">
+                                    <tr class="advantage_points">
+                                        <td id="advPointD">R1</td>
+                                        <td id="advPointE">R2</td>
+                                        <td id="advPointF">R3</td>
+                                    </tr>
+                                    </table>
+                                    <table>
+                                        <tr>
+                                            <th>Player 2</th>
+                                        </tr>
+                                        <tr>
+                                            <td id="blue_name"></td>
+                                        </tr>
+                                    </table>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div>
+                <hr />
+                <table id="gameMatchForm">
+                    <tr>
+                        <td colspan="100%">
+                            <h3>Game Match Form</h3>
+                            <hr />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th>First Name</th>
+                        <th>Middle Name</th>
+                        <th>Last Name</th>
+                        <th>Gender</th>
+                        <th>Weight</th>
+                        <th>Organization/Team</th>
+                    </tr>
+                    <tr>
+                        <td>Player 1</td>
+                        <td><div><input id="first_name_red" type="text" placeholder="First Name" value="RFn"></div></td>
+                        <td><div><input id="middle_name_red" type="text" placeholder="Middle Name" value="RMn"></div></td>
+                        <td><div><input id="last_name_red" type="text" placeholder="Last Name" value="RLn"></div></td>
+                        <td><div><input id="gender_red" type="text" placeholder="M/F" value="M"></div></td>
+                        <td><div><input id="weight_red" type="text" placeholder="kg" value="35"></div></td>
+                        <td><div><input id="team_red" type="text" placeholder="Team" value="schoolRed"></div></td>
+                    </tr>
+                    <tr>
+                        <td>Player 2</td>
+                        <td><div><input id="first_name_blue" type="text" placeholder="First Name" value="BFn"></div></td>
+                        <td><div><input id="middle_name_blue" type="text" placeholder="Middle Name" value="BMn"></div></td>
+                        <td><div><input id="last_name_blue" type="text" placeholder="Last Name" value="BLn"></div></td>
+                        <td><div><input id="gender_blue" type="text" placeholder="M/F" value="M"></div></td>
+                        <td><dv><input id="weight_blue" type="text" placeholder="kg" value="35"></dv></td>
+                        <td><div><input id="team_blue" type="text" placeholder="Team" value="schoolBlue"></div></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <th>Division</td>
+                        <th>Category</th>
+                        <th>Court No.</th>
+                        <th>Match No.</th>
+                        <th>Weight Category</th>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><input id="division_input" type="text" placeholder="Senior/Junior" autocomplete="off" value="Junior"></td>
+                        <td><input id="category_input" type="text" placeholder="Men/Women" autocomplete="off" value="Men"></td>
+                        <td><input id="court_input" type="text" placeholder="Court" autocomplete="off" value="1"></td>
+                        <td><input id="match_input" type="text" placeholder="Match" autocomplete="off" value="1"></td>
+                        <td>
+                            <div id="divWeight">
+                            <select name="weight" id="select_weight_category" onchange="selectedWeights()">
+                                <option value="">--Please choose an option--</option>
+                                <option value="bantam">Bantam</option>
+                                <option value="feather">Feather</option>
+                                <option value="light">Light</option>
+                                <option value="welter">Welter</option>
+                                <option value="middle">Middle</option>
+                                <option value="cruiser">Cruiser</option>
+                            </select>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Time</td>
+                        <td><input id="minutes_input" type="numeric" placeholder="minutes: 0-2" autocomplete="off" value="0"></td>
+                        <td><input id="seconds_input" type="numeric" placeholder="seconds: 0-59" autocomplete="off" min="0" max="59" value="2"></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><br /><button type="button" id="submit_current_form">Submit</button></td>
+                        <!-- <td></td><td></td><td></td><td></td> -->
+                        <!-- <td><button type="button" id="test_button">Test</button></td> -->
+                    </tr>
+                </table>
+                <!-- <iframe id="matchform" src="static/scoreboard/gamematchform.html" scrolling="no"></iframe> -->
+            </div>
+                <script src="/static/scoreboard/scoreboard.js"></script>
+        </main>
+
+    <footer>
+
+    </footer>
+    <!-- <script src="static/main.js"></script> -->
+
+    </body>
+
+</html>
