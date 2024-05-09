@@ -1,0 +1,16 @@
+table {
+    display: block;
+    border: none;
+    color: yellow;
+    background-color: black;
+    border-spacing: 0;
+    border-collapse: separate;
+    border-radius: 200px;
+}
+
+#timer_actual {
+    width: 160px;
+    font-size: 120px;
+    margin: auto;
+    user-select: none;
+}
