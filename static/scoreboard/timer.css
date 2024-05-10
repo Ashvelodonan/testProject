@@ -1,5 +1,5 @@
 table {
-    display: block;
+    display: grid;
     border: none;
     color: yellow;
     background-color: black;
