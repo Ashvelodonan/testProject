@@ -68,8 +68,7 @@
 
 table {
     width: 100%;
-/*     table-layout: auto; */
-    table-layout: fixed;
+    table-layout: auto;
     background: white;
     /* padding: 2px; */
 }
