@@ -3,14 +3,14 @@ table {
     border: none;
     color: yellow;
     background-color: black;
-    border-spacing: 0;
+    border-spacing: 0px;
     border-collapse: separate;
     border-radius: 200px;
     justify-content: center;
 }
 
-#timer_actual {
-/*     width: 160px; */
+#timer_actual,
+#suddenTimer_actual {
     font-size: 65px;
     margin: auto;
     user-select: none;
