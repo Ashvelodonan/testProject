@@ -1,13 +1,97 @@
-#table_contents,
-#tablePartial {
-    user-select: none;
-    justify-content: center;
+#overallWinner {
+    /* border: 5px solid; */
+    width: 195px;
+    margin-inline: auto;
+    padding: 10px;
+    border-radius: 40px;
+}
+
+#printHeader {
+    width: 125px;
+}
+
+.logoh3 {
+    width: 50px;
+}
+
+.winnerRedOverall {
+    background: linear-gradient(to right, red 0%,
+    yellow 50%, yellow 50%, red 100%);
+    font-weight: bold;
+}
+
+.winnerBlueOverall {
+    background: linear-gradient(to right, blue 0%,
+    yellow 50%, yellow 50%, blue 100%);
+    font-weight: bold;
+}
+
+#suddenDeath {
+    display: inline-block;
+    padding: 3px;
+    border-collapse: separate;
+    white-space: nowrap;
+    /* background-color: ; */
+    background-image: url("images/BALSIG3.jpg");
+    background-size: 150% 100%;/*110% 135%;*/ /*100% 135%;*/
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+#coinTossBoard {
     display: grid;
+    justify-content: center;
+}
+#coinTossCT {
+    display: inline-block;
+    padding: 3px;
+    border-collapse: separate;
+    white-space: nowrap;
+    background-image: url("images/BALSIG3.jpg");
+    background-size: 180% 107%;/*110% 135%;*/ /*100% 135%;*/
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+#player1Red {
+    color: red;
+    font-weight: bold;
+}
+
+#player2Blue {
+    color: blue;
+    font-weight: bold;
+}
+
+#red_name,
+#blue_name {
+    color: white;
+    font-weight: bold;
+}
+
+#table_contents {
+    /* display: inline; */
+    display: grid;
+    justify-content: center;
+    user-select: none;
     padding: 2px;
 }
 
-#showHide {
+#tablePartial {
+    display: grid;
+    justify-content: center;
+    padding: 2px;
+    /* background: white; */
+    box-sizing: border-box !important;
+}
+
+#showHide,
+#save_btn {
     margin: 2px;
+}
+
+#currentMatchData {
+    width: 510px;
 }
 
 #currentMatchData,
@@ -19,7 +103,8 @@
 }
 
 #displayVS,
-#weight_category_selected {
+#weight_category_selected,
+#suddenDeathMatch {
     color: white;
     /* mix-blend-mode: difference; */
 }
@@ -29,9 +114,11 @@
     display: grid;
     position: relative;
     border: 5px solid black;
-    table-layout: auto;
+    table-layout: auto !important;
     overflow: auto;
     white-space: nowrap;
+    /* background: white; */
+    background-color: rgba(255, 255, 255, 50%);
 }
 
 #winnersData table th {
@@ -41,14 +128,23 @@
     text-align: center;
 }
 
-/* .half-color {
-    background: linear-gradient(
-        to right,
-        red 0%,
-        red 50%,
-        blue 50%,
-        blue 100%)
-} */
+#form_SD,
+#input_CT,
+#form_customTime {
+    padding: 5px;
+    width: 245px;
+    display: inline-block;
+    margin-top: 5px;
+    background-color: rgba(255, 255, 255, 50%);
+    border-radius: 50px;
+}
+
+.half-color {
+    background-image: url("images/BALSIG4.png");
+    background-size: 145% 185%; /*100% 135%;*/ /*100% 135%*/
+    background-repeat: no-repeat;
+    background-position: center center;
+}
 
 .centerText {
     text-align: center !important;
@@ -70,9 +166,7 @@
 
 table {
     width: 100%;
-    table-layout: auto;
-    background: white;
-    /* padding: 2px; */
+    /* table-layout: auto; */
 }
 
 .py-5 {
@@ -82,10 +176,10 @@ table {
 body {
     background: linear-gradient(
         to right,
-        red 0%,
+        black 0%,
         red 50%,
         blue 50%,
-        blue 100%)
+        black 100%)
 }
 
 .finalButtonsTable {
@@ -96,6 +190,7 @@ body {
 
 .advantage_points {
     width: 10px;
+    color: white;
 }
 
 #advPointA,
@@ -107,7 +202,6 @@ body {
     border: 5px solid green;
     user-select: none;
 }
-
 
 #message,
 #messageNew,
@@ -160,7 +254,7 @@ body {
 }
 
 #scoreboard_table {
-    display: grid;
+    display: inline;
     position: relative;
 }
 
@@ -205,6 +299,9 @@ body {
     font-weight: bold;
     width: 50%;
     user-select: none;
+    background-color: black;
+    color: white;
+    font-weight: bold;
 }
 
 
@@ -214,6 +311,9 @@ body {
     font-weight: bold;
     width: 50%;
     user-select: none;
+    background: black;
+    color: white;
+    font-weight: bold;
 }
 
 th.score_subtitle,
@@ -222,6 +322,7 @@ td.advPoint {
     font-weight: bold;
     height: 0px;
     border: none;
+    color: white;
 }
 
 td.red_team {
@@ -229,6 +330,9 @@ td.red_team {
     width: 40px;
     height: 40px;
     padding: 0px 15px 0px;
+    background-color: black;
+    color: white;
+    font-weight: bold;
 }
 
 td.blue_team {
@@ -236,16 +340,19 @@ td.blue_team {
     width: 40px;
     height: 40px;
     padding: 0px 15px 0px;
+    background: black;
+    color: white;
+    font-weight: bold;
 }
 
-/* td {
-    border: 2px solid black;
-    position: relative;
-} */
-
-iframe {
+iframe{
     margin: auto;
     width: 200px;
-    overflow: auto;
+    overflow: hidden;
     border: none;
+    height: 118px; /*118px or 100%*/
+}
+
+#timerSudden_outside {
+    height: 100px;
 }
