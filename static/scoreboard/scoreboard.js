@@ -18,7 +18,7 @@ function printPDF2() {
     docprint.document.write('.centerText {text-align: center !important;}');
     docprint.document.write('th, td {border: 1px solid black;margin: auto;padding: 5px;text-align: center;}');
     docprint.document.write('table {justify-content: center !important; border-collapse: collapse; margin-bottom: 5px;}');
-    docprint.document.write('#overallWinner {width: 195px;margin-inline: auto;padding: 10px;border-radius: 40px; border: 2px solid;}');
+    docprint.document.write('#overallWinner {width: 195px;margin-inline: auto;padding: 10px;border-radius: 40px; border: 2px solid;white-space: pre;}');
     docprint.document.write('#printHeader {width: 125px;}');
     docprint.document.write('.logoh3{width: 50px;}');
     docprint.document.write('img, svg {vertical-align: middle;}');
