@@ -201,12 +201,11 @@ function printPDF2() {
 
     var disp_setting="toolbar=yes,location=no,";
     disp_setting+="directories=yes,menubar=yes,";
-    disp_setting+="scrollbars=yes,width=650, height=600, left=100, top=25";
+    disp_setting+="scrollbars=yes,width=screen.availWidth, height=screen.availHeight, left=100, top=25";
     var docprint = window.open("","",disp_setting);
     docprint.document.open();
     docprint.document.write('<!DOCTYPE html>');
     docprint.document.write('<html lang="en">');
-    docprint.document.write('<head><title>Arnis Scoreboard</title>');
     docprint.document.write('<style type="text/css">');
 
     docprint.document.write('body{ margin:0px;display: grid;');
@@ -509,7 +508,6 @@ startbtn.addEventListener("click", () => {
         thirdRound.style.border = "5px solid gray";
     }
     if (currentRound == 2) {
-        //savebtn.disabled = false;
         currentRound = currentRound;
         secondRound.style.backgroundColor = "green";
         secondRound.style.color = "yellow";
@@ -647,7 +645,6 @@ function nextRound() {
         currentScoreR1 = winnerScore;
         currentLoserR1 = loserName;
         currentloserScoreR1 = loserScore;
-        //if lose or win PRINT
         console.log(`${`winRed:`} ${winRed}`);
         console.log(`${`winBlue:`} ${winBlue}`);
         if ((winRed > 0 && winRed > winBlue) ||
@@ -704,7 +701,8 @@ function nextRound() {
                 ) {
                 winner2_R1.innerHTML = "(score)";
                 console.log("scorePrint");
-            }           
+            }
+            
             if (inputscore1.value == inputscore2.value
                 && (subTotalFoul2 == 0 && disarm2 == 0)
                 && (subTotalFoul1 == 0 && disarm1 == 0)
@@ -713,7 +711,7 @@ function nextRound() {
                 && (redCoins == 0 && blueCoins == 0)
                 ) {
                 winner2_R1.innerHTML = "(advPoint)";
-            }
+            }            
             winner1_R1.innerHTML = currentWinnerR1;
             score1_R1.innerHTML = currentScoreR1;
             score2_R1.innerHTML = currentloserScoreR1;
@@ -781,7 +779,7 @@ function nextRound() {
                 ) {
                 winner1_R1.innerHTML = "(score)";
                 console.log("scorePrint");
-            }           
+            }
             if (inputscore1.value == inputscore2.value
                 && (subTotalFoul2 == 0 && disarm2 == 0)
                 && (subTotalFoul1 == 0 && disarm1 == 0)
@@ -1146,7 +1144,6 @@ function nextRound() {
 } //nextRound()
 playbtn.addEventListener("click", playCountdown); //playbtn
 stopbtn.addEventListener("click", stopCountdown); //stopbtn
-//resetbtn.addEventListener("click", resetCountdown);
 resetbtn.addEventListener("click", () => {
     console.log("resetBtnEvent");
     resetBtnConfirm = confirm(`${`Are you sure you want to reset?`}\n${`Current Round:`} ${currentRound}`);
@@ -1169,7 +1166,7 @@ resetbtn.addEventListener("click", () => {
         scoreOne.innerHTML = `0` + inputScore1.value;
         scoreTwo.innerHTML = `0` + inputScore2.value;
         console.log(`${defaultScoreOne}`);
-        console.log(`${defaultScoreTwo}`);
+        console.log(`${defaultScoreTwo}`);        
     }
 }); //resetbtn
 function resetCountdown() {
@@ -1224,7 +1221,6 @@ function runtime() {
             startActivate = 0;
             //if foul exist = foul condition
             if (valueFoulA == 1 || valueFoulB == 1 || valueFoulD == 1 || valueFoulE == 1) {
-                //determineFoul();
                 console.log("detFoul");
                 determineWinner();
             } else {
@@ -1302,7 +1298,7 @@ function foulRed() {
         winnerScore = inputscore2.value;
         winnerName = nameBlueValue;
         console.log(`BLUE WINS from foul`);
-        alert(`BLUE WINS from foul`);
+        alert(`BLUE WINS from foul`);        
     }
     console.log(`${`Current Round:`} ${currentRound}`);
     playbtn.disabled = true;
@@ -1417,7 +1413,6 @@ function disarmBlue() {
 disarmBlue();
 function determineFoul() {
     if ((valueFoulA == 1 || valueFoulB == 1) && inputScore1.value == 0 && totalSeconds == 0) {
-        //foulRed();
         if (valueFoulA == 1) {
             console.log("foulA");
         }
@@ -1939,11 +1934,6 @@ function resetForRound() {
     nextbtn.disabled = true;
     savebtn.disabled = true;
 }
-function scorer() {
-    // console.log(`${`scorer()`}`);
-    defaultScoreOne = 0;
-    defaultScoreTwo = 0;
-    var maxScoreValue = 30;
     redAdd.addEventListener('mouseover', () => {
         if (valueFoulF == 0 && valueFoulC == 0 && disarmD_value == 0 && disarmB_value == 0 && startActivate == 1) {
             redAdd.style.backgroundColor = 'green';
@@ -2104,7 +2094,6 @@ function scorer() {
             }
         }
     });
-    // return;
 } //scorer()
 scorer();
 function determineWinner() {
@@ -2309,9 +2298,9 @@ var valueSecondsSD = parseInt(inputSeconds_SD.value);
 var valueMinsDefSD = 0;
 var valueSecondsDefSD = 0;
 var showFormSDval = 0;
-var showSDBoardval = 1; //make 0 final
+var showSDBoardval = 0; //make 0 final
 var show_SDCT = document.getElementById("show_SDCT");
-var showSDCTval = 1; // make 0 final
+var showSDCTval = 0; // make 0 final
 var showTIEformsval = 1;
 showSDBoard();
 
@@ -2536,7 +2525,6 @@ function runtimeSD() {
         if (totalSecondsSD <= 0) {
             console.log(`${`totalSecondsSD`} ${totalSecondsSD}`);
             clearInterval(timerIntervalSD);
-            //alert('Timer reached zero!');
             console.log(suddenDeathScoreA);
             console.log(suddenDeathScoreB);
             if (suddenDeathScoreA > suddenDeathScoreA) {
@@ -2605,8 +2593,8 @@ var redCoinChoice = document.getElementById("redCoinChoice");
 var blueCoinChoice = document.getElementById("blueCoinChoice");
 var headsCount = document.getElementById("heads-count");
 var tailsCount = document.getElementById("tails-count");
-var showFormCTval = 1; //make 0 final
-var showCTBoardval = 1; //make 0 final
+var showFormCTval = 0; //make 0 final
+var showCTBoardval = 0; //make 0 final
 showFormCT();
 showCTBoard();
 showSDCT();
