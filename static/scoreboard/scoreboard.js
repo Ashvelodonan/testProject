@@ -228,7 +228,7 @@ function printPDF2() {
     docprint.document.write(printTable);
 
     // Close the document
-    docprint.document.close();
+    docprint.document.close();    
 }
 
 function selectedWeights() {
@@ -396,6 +396,7 @@ function gameReset() {
 
 }
 function overallWin() {
+    //if winRed == 2 || if winBlue == 2
     if (currentRound == 2){
         if (winRed == 2) {
             overallWinner.textContent = `${"OVERALL WINNER"} ${playerNameRed}`;
@@ -645,6 +646,7 @@ function nextRound() {
         currentScoreR1 = winnerScore;
         currentLoserR1 = loserName;
         currentloserScoreR1 = loserScore;
+        //if lose or win PRINT
         console.log(`${`winRed:`} ${winRed}`);
         console.log(`${`winBlue:`} ${winBlue}`);
         if ((winRed > 0 && winRed > winBlue) ||
@@ -702,7 +704,6 @@ function nextRound() {
                 winner2_R1.innerHTML = "(score)";
                 console.log("scorePrint");
             }
-            
             if (inputscore1.value == inputscore2.value
                 && (subTotalFoul2 == 0 && disarm2 == 0)
                 && (subTotalFoul1 == 0 && disarm1 == 0)
@@ -711,7 +712,7 @@ function nextRound() {
                 && (redCoins == 0 && blueCoins == 0)
                 ) {
                 winner2_R1.innerHTML = "(advPoint)";
-            }            
+            }
             winner1_R1.innerHTML = currentWinnerR1;
             score1_R1.innerHTML = currentScoreR1;
             score2_R1.innerHTML = currentloserScoreR1;
@@ -1144,6 +1145,7 @@ function nextRound() {
 } //nextRound()
 playbtn.addEventListener("click", playCountdown); //playbtn
 stopbtn.addEventListener("click", stopCountdown); //stopbtn
+//resetbtn.addEventListener("click", resetCountdown);
 resetbtn.addEventListener("click", () => {
     console.log("resetBtnEvent");
     resetBtnConfirm = confirm(`${`Are you sure you want to reset?`}\n${`Current Round:`} ${currentRound}`);
@@ -1166,7 +1168,7 @@ resetbtn.addEventListener("click", () => {
         scoreOne.innerHTML = `0` + inputScore1.value;
         scoreTwo.innerHTML = `0` + inputScore2.value;
         console.log(`${defaultScoreOne}`);
-        console.log(`${defaultScoreTwo}`);        
+        console.log(`${defaultScoreTwo}`);
     }
 }); //resetbtn
 function resetCountdown() {
@@ -1221,6 +1223,7 @@ function runtime() {
             startActivate = 0;
             //if foul exist = foul condition
             if (valueFoulA == 1 || valueFoulB == 1 || valueFoulD == 1 || valueFoulE == 1) {
+                //determineFoul();
                 console.log("detFoul");
                 determineWinner();
             } else {
@@ -1298,7 +1301,7 @@ function foulRed() {
         winnerScore = inputscore2.value;
         winnerName = nameBlueValue;
         console.log(`BLUE WINS from foul`);
-        alert(`BLUE WINS from foul`);        
+        alert(`BLUE WINS from foul`);
     }
     console.log(`${`Current Round:`} ${currentRound}`);
     playbtn.disabled = true;
@@ -1413,6 +1416,7 @@ function disarmBlue() {
 disarmBlue();
 function determineFoul() {
     if ((valueFoulA == 1 || valueFoulB == 1) && inputScore1.value == 0 && totalSeconds == 0) {
+        //foulRed();
         if (valueFoulA == 1) {
             console.log("foulA");
         }
@@ -1421,6 +1425,7 @@ function determineFoul() {
         }
     }
     if ((valueFoulD == 1 || valueFoulE == 1) && inputScore2.value == 0 && totalSeconds == 0) {
+        //foulBlue();
         if (valueFoulD == 1) {
             console.log("foulD");
         }
@@ -1934,6 +1939,11 @@ function resetForRound() {
     nextbtn.disabled = true;
     savebtn.disabled = true;
 }
+function scorer() {
+    defaultScoreOne = 0;
+    defaultScoreTwo = 0;
+    var maxScoreValue = 30;
+
     redAdd.addEventListener('mouseover', () => {
         if (valueFoulF == 0 && valueFoulC == 0 && disarmD_value == 0 && disarmB_value == 0 && startActivate == 1) {
             redAdd.style.backgroundColor = 'green';
@@ -2525,6 +2535,7 @@ function runtimeSD() {
         if (totalSecondsSD <= 0) {
             console.log(`${`totalSecondsSD`} ${totalSecondsSD}`);
             clearInterval(timerIntervalSD);
+            //alert('Timer reached zero!');
             console.log(suddenDeathScoreA);
             console.log(suddenDeathScoreB);
             if (suddenDeathScoreA > suddenDeathScoreA) {
