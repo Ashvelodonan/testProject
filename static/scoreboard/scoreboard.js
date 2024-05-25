@@ -1,3 +1,38 @@
+function printPDF2() {
+    let printTable = document.getElementById("tablePartial").innerHTML;
+
+    var disp_setting="toolbar=yes,location=no,";
+    disp_setting+="directories=yes,menubar=yes,";
+    disp_setting+="scrollbars=yes,width=screen.availWidth, height=screen.availHeight, left=100, top=25";
+    var docprint = window.open("","",disp_setting);
+    docprint.document.open();
+    docprint.document.write('<!DOCTYPE html>');
+    docprint.document.write('<html lang="en">');
+    docprint.document.write('<style type="text/css">');
+
+    docprint.document.write('body{ margin:0px;display: grid;');
+    docprint.document.write('justify-content: center;padding: 10px;');
+    docprint.document.write('font-family:verdana,Arial;color:#000;box-sizing: border-box !important;text-align: center !important;');
+    docprint.document.write('font-family:Verdana, Geneva, sans-serif; font-size:15px;}');
+    docprint.document.write('a{color:#000;text-decoration:none;}');
+    docprint.document.write('.centerText {text-align: center !important;}');
+    docprint.document.write('th, td {border: 1px solid black;margin: auto;padding: 5px;text-align: center;}');
+    docprint.document.write('table {justify-content: center !important; border-collapse: collapse; margin-bottom: 5px;}');
+    docprint.document.write('#overallWinner {width: 195px;margin-inline: auto;padding: 10px;border-radius: 40px; border: 2px solid;}');
+    docprint.document.write('#printHeader {width: 125px;}');
+    docprint.document.write('.logoh3{width: 50px;}');
+    docprint.document.write('img, svg {vertical-align: middle;}');
+
+    docprint.document.write('</style>');
+    docprint.document.write('</head><body onLoad="self.print()"><center>');
+
+    // Write the HTML content including the image
+    docprint.document.write(printTable);
+
+    // Close the document
+    docprint.document.close();    
+}
+
 let timerInterval;
 let timerRunning = false;
 let totalSeconds = 0;
@@ -195,41 +230,6 @@ resetbtn.disabled = true;
 stopbtn.disabled = true;
 nextbtn.disabled = true;
 savebtn.disabled = true;
-
-function printPDF2() {
-    var printTable = document.getElementById("tablePartial").innerHTML;
-
-    var disp_setting="toolbar=yes,location=no,";
-    disp_setting+="directories=yes,menubar=yes,";
-    disp_setting+="scrollbars=yes,width=screen.availWidth, height=screen.availHeight, left=100, top=25";
-    var docprint = window.open("","",disp_setting);
-    docprint.document.open();
-    docprint.document.write('<!DOCTYPE html>');
-    docprint.document.write('<html lang="en">');
-    docprint.document.write('<style type="text/css">');
-
-    docprint.document.write('body{ margin:0px;display: grid;');
-    docprint.document.write('justify-content: center;padding: 10px;');
-    docprint.document.write('font-family:verdana,Arial;color:#000;box-sizing: border-box !important;text-align: center !important;');
-    docprint.document.write('font-family:Verdana, Geneva, sans-serif; font-size:15px;}');
-    docprint.document.write('a{color:#000;text-decoration:none;}');
-    docprint.document.write('.centerText {text-align: center !important;}');
-    docprint.document.write('th, td {border: 1px solid black;margin: auto;padding: 5px;text-align: center;}');
-    docprint.document.write('table {justify-content: center !important; border-collapse: collapse; margin-bottom: 5px;}');
-    docprint.document.write('#overallWinner {width: 195px;margin-inline: auto;padding: 10px;border-radius: 40px; border: 2px solid;}');
-    docprint.document.write('#printHeader {width: 125px;}');
-    docprint.document.write('.logoh3{width: 50px;}');
-    docprint.document.write('img, svg {vertical-align: middle;}');
-
-    docprint.document.write('</style>');
-    docprint.document.write('</head><body onLoad="self.print()"><center>');
-
-    // Write the HTML content including the image
-    docprint.document.write(printTable);
-
-    // Close the document
-    docprint.document.close();    
-}
 
 function selectedWeights() {
     var weightCategorySelected = document.getElementById("weight_category_selected");
