@@ -362,8 +362,10 @@ function gameReset() {
         overallWinner.textContent = "";
         overallWinner.style.border = "";
         startActivate = 0;
-        coin.style.animation = "none";
-        coin.style.transform = "";
+        if (showCTBoardval == 1) {
+            coin.style.animation = "none";
+            coin.style.transform = "";
+        }
         i=1;
     }
     if (currentRound == 2) {
