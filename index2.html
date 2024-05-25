@@ -28,32 +28,41 @@
             <header>                
             </header>
         <main class="container py-5 text-center">
-            <table id="tablePartial" style="display:grid; !important;">
+            <table tabindex="0" id="tablePartial" style="display:grid; background:white;">
+            <tbody>
                 <tr>
                     <td colspan="100%">
-                        <h3>Player Information and Partial Results</h3>
+                        <div id="printHeader">
+            
+                        </div>
+                        <h3>
+                            <span><img class="logoh3" src="static/images/BbladesPNG.png"></span>
+                            Player Information and Partial Results
+                            <span><img class="logoh3" src="static/images/BalsigPNG.png"></span>
+                        </h3>
+                        <p id="overallWinner"></p>
                     </td>
                 </tr>
                 <tr>
-                    <td id="currentMatchData">
+                    <td id="currentMatchData" style="margin-bottom: 10px;">
                         <table style="display:grid; text-align:left !important;">
                             <tr>
-                                <td>Player 1: <span id="fullname_red_current"></span></td>
+                                <td>RED: <span id="fullname_red_current"></span></td>
                                 <td>Gender: <span id="gender_red_current"></span></td>
                                 <td>Weight: <span id="weight_red_current"></span></td>
                             </tr>
                             <tr>
-                                <td>Player 2: <span id="fullname_blue_current"></span></td>
+                                <td>BLUE: <span id="fullname_blue_current"></span></td>
                                 <td>Gender: <span id="gender_blue_current"></span></td>
                                 <td>Weight: <span id="weight_blue_current"></span></td>
                             </tr>
                             <tr>
-                                <td>Team 1: <span id="team_red_current"></span></td>
+                                <td>Red Team: <span id="team_red_current"></span></td>
                                 <td>Category: <span id="category_current"></span></td>
                                 <td>Match No.: <span id="match_current"></span></td>
                             </tr>
                             <tr>
-                                <td>Team 2: <span id="team_blue_current"></span></td>
+                                <td>Blue Team: <span id="team_blue_current"></span></td>
                                 <td>Division: <span id="division_current"></span></td>
                                 <td>Court No.: <span id="court_current"></span></td>
                             </tr>
@@ -61,6 +70,7 @@
                     </td>
                     <td id="winnersData">
                         <table style="display:grid; text-align:left !important;">
+                            <tbody>
                             <tr>
                                 <th>Player</th>
                                 <th>Score</th>
@@ -73,7 +83,7 @@
                                 <td class="centerText" colspan="100%">Round 1</td>
                             </tr>
                             <tr>
-                                <td>Player 1</td>
+                                <td>RED</td>
                                 <td class="centerText"><span id="score1_R1"></span></td>
                                 <td class="centerText"><span id="foul1_R1"></span></td>
                                 <td class="centerText"><span id="disarm1_R1"></span></td>
@@ -81,7 +91,7 @@
                                 <td class="centerText"><span id="winner1_R1"></span></td>
                             </tr>
                             <tr>
-                                <td>Player 2</td>
+                                <td>BLUE</td>
                                 <td class="centerText"><span id="score2_R1"></span></td>
                                 <td class="centerText"><span id="foul2_R1"></span></td>
                                 <td class="centerText"><span id="disarm2_R1"></span></td>
@@ -92,7 +102,7 @@
                                 <td class="centerText" colspan="100%">Round 2</td>
                             </tr>
                             <tr>
-                                <td>Player 1</td>
+                                <td>RED</td>
                                 <td class="centerText"><span id="score1_R2"></span></td>
                                 <td class="centerText"><span id="foul1_R2"></span></td>
                                 <td class="centerText"><span id="disarm1_R2"></span></td>
@@ -100,7 +110,7 @@
                                 <td class="centerText"><span id="winner1_R2"></span></td>
                             </tr>
                             <tr>
-                                <td>Player 2</td>
+                                <td>BLUE</td>
                                 <td class="centerText"><span id="score2_R2"></span></td>
                                 <td class="centerText"><span id="foul2_R2"></span></td>
                                 <td class="centerText"><span id="disarm2_R2"></span></td>
@@ -111,7 +121,7 @@
                                 <td class="centerText" colspan="100%">Round 3</td>
                             </tr>
                             <tr>
-                                <td>Player 1</td>
+                                <td>RED</td>
                                 <td class="centerText"><span id="score1_R3"></span></td>
                                 <td class="centerText"><span id="foul1_R3"></span></td>
                                 <td class="centerText"><span id="disarm1_R3"></span></td>
@@ -119,32 +129,154 @@
                                 <td class="centerText"><span id="winner1_R3"></span></td>
                             </tr>
                             <tr>
-                                <td>Player 2</td>
+                                <td>BLUE</td>
                                 <td class="centerText"><span id="score2_R3"></span></td>
                                 <td class="centerText"><span id="foul2_R3"></span></td>
                                 <td class="centerText"><span id="disarm2_R3"></span></td>
                                 <td class="centerText"><span id="advPoint2_R3"></span></td>
                                 <td class="centerText"><span id="winner2_R3"></span></td>
                             </tr>
+                            </tbody>
                         </table>
+                        <tr>
+                            <td style="float:right !important" id="currentDate"></td>
+                        </tr>
                     </td>
                 </tr>
+            </tbody>
             </table>
             <div style="float:left !important">
+                <button onclick="printPDF2()">print</button>
                 <button type="button" id="showHide">hide</button>
+                <button id="save_btn" type="button">save</button>
             </div>
             <hr />
+            <div tabindex="0" id="suddenDeathBoard">
+                <div>
+                    <table>
+                        <tbody id="suddenDeath">
+                            <tr>
+                                <th colspan="100%"><h3 id="suddenDeathMatch">Tie Breaker</h3></th>
+                            </tr>
+                            <tr>
+                                <td colspan="100%" id="suddenTime">
+                                    <iframe id="timerSudden_outside" src="static/scoreboard/suddenTimer.html" class="timer-frame" scrolling="no"></iframe>
+                                </td>
+                            <tr>
+                                <td colspan="100%">
+                                    <button type="button" id="startbtn_SD">Start</button>
+                                    <button type="button" id="playbtn_SD">Play</button>
+                                    <button type="button" id="stopbtn_SD">Pause</button>
+                                    <button type="button" id="resetbtn_SD">Reset</button>
+                                </td>
+                            </tr>
+                            </tr>
+                            <tr>
+                                <td class="red_team" id="player1SD" style="width: 50%;">RED</td>
+                                <td class="blue_team" id="player2SD">BLUE</td>
+                            </tr>
+                            <tr>
+                                <td><button class="red_team" type="button" id="suddenDeathAbtn">HIT</button></td>
+                                <td><button class="blue_team" type="button" id="suddenDeathBbtn">HIT</button></td>
+                            </tr>
+                            <tr>
+                                <td colspan="100%">
+                                    <button type="button" id="nextBtn_SD">Next</button>
+                                </td>
+                                <!-- <td style="height: 30px;"></td> -->
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+                    <form id="form_SD">
+                        <h3>Set Time</h3>
+                        <label>minutes:</label>
+                        <input id="inputMinutes_SD" type="numeric" placeholder="" autocomplete="off" min="0" max="2" value="0"
+                        style="
+                            text-align: center;
+                            resize: horizontal;
+                            width: 50px;
+                        "><br />
+                        <label>seconds:</label>
+                        <input id="inputSeconds_SD" type="numeric" placeholder="" autocomplete="off" min="0" max="59" value="30"
+                        style="text-align: center;resize: horizontal;width: 50px;"><br />
+                        <button type="button" id="submitbtn_SD" style="margin-top: 5px;">Submit</button>
+                    </form>
+                </div>
+            </div>
+            <br />
+            <div tabindex="0" id="coinTossBoard">
+                <div>
+                    <table>
+                        <tbody id="coinTossCT">
+                            <tr>
+                                <th colspan="100%" style="color: white;">
+                                    <h3>Coin Toss</h3>
+                                </th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p class="stats" id="heads-count"></p>
+                                </td>
+                                <td>
+                                    <p class="stats" id="tails-count"></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="100%">
+                                    <iframe id="cointoss_outside" src="static/cointoss/cointoss.html" style="height: 170px; width: 200px;" scrolling="no"></iframe>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="color: red; font-weight: bold;">RED</td>
+                                <td style="color: blue; font-weight: bold;">BLUE</td>
+                            </tr>
+                            <tr>
+                                <td class="red_team" id="redCoinChoice" style="width: 50%;"></td>
+                                <td class="blue_team" id="blueCoinChoice" style="width: 50%;"></td>
+                            </tr>
+                            <tr>
+                                <td><button type="button" id="resetCoinToss">Reset</button></td>
+                                <td><button type="button" id="nextRoundCT">Next</button></td>
+                            </tr>
+                            <tr>
+                                <td colspan="100%">
+                                    <button type="button" id="flipCoinToss">Flip</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+                    <form id="input_CT" style="margin-bottom: 20px;">
+                        <h3>Set Choice</h3>
+                        <h6>Heads: 1 / Tails: 2</h6>
+                        <label>RED:</label>
+                        <input type="numeric" id="inputRedCoins" placeholder="input 1 or 2"
+                                    style="text-align: center; width: 100px;"/>
+                        <br />
+                        <label>BLUE:</label>
+                        <input type="numeric" id="inputBlueCoins" placeholder="input 1 or 2"
+                                    style="text-align: center; width: 100px;"/><br />
+                        <button type="button" id="submitToss" style="margin-top: 5px;">Submit</button>
+                    </form>
+                </div>
+            </div>
+            <div style="padding: 5px;">
+                <button type="button" id="show_SDCT">coin toss</button>
+            </div>
             <div id="table_contents">
                 <h3><span id="weight_category_selected"></span></h3>
                 <h1 class="displayVS"><span id="displayVS"></span></h1>
-                <table id="scoreboard_table">
+                <table tabindex="0" id="scoreboard_table">
                     <tbody class="half-color">
                     <tr id="scoreboard_table_row">
                         <td id="left">
                             <table id="leftcontent">
                                 <tbody>
                                     <tr>
-                                        <th class="score_subtitle">Score A</th>
+                                        <th id="player1Red">RED</th>
                                     </tr>
                                     <tr>
                                         <input id="inputscore1" type="numeric" value="0" hidden>
@@ -174,9 +306,6 @@
                             </table>
                             <table>
                                 <tr>
-                                    <th>Player 1</th>
-                                </tr>
-                                <tr>
                                     <td id="red_name"></td>
                                 </tr>
                             </table>
@@ -189,7 +318,7 @@
                         <!-- main -->
                             <button id="start_btn" type="button">Start</button>
                             <button id="play_btn" type="button">Play</button>
-                            <button id="stop_btn" type="button">Stop</button>
+                            <button id="stop_btn" type="button">Pause</button>
                             <button id="reset_btn" type="button">Reset</button>
                             <table id="scoreboard_rounds">
                                 <tbody>
@@ -215,30 +344,30 @@
                                 <tbody>
                                 <div class="score_title">
                                     <tr>
-                                        <th class="score_subtitle">foul A</th>
+                                        <th class="score_subtitle"></th>
                                         <th class="score_blank"></th>
-                                        <th class="score_subtitle">foul B</th>
+                                        <th class="score_subtitle">foul</th>
                                         <th class="score_blank"></th>
-                                        <th class="score_subtitle">foul C</th>
+                                        <th class="score_subtitle"></th>
                                         <th class="score_blank"></th>
-                                        <th class="score_subtitle">foul D</th>
+                                        <th class="score_subtitle"></th>
                                         <th class="score_blank"></th>
-                                        <th class="score_subtitle">foul E</th>
+                                        <th class="score_subtitle">foul</th>
                                         <th class="score_blank"></th>
-                                        <th class="score_subtitle">foul F</th>
+                                        <th class="score_subtitle"></th>
                                     </tr>
                                     <tr>
-                                        <td class="red_team" id="foulA"></td>
+                                        <td class="red_team" id="foulA">1</td>
                                         <td class="score_blank"></td>
-                                        <td class="red_team" id="foulB"></td>
+                                        <td class="red_team" id="foulB">2</td>
                                         <td class="score_blank"></td>
-                                        <td class="red_team" id="foulC"></td>
+                                        <td class="red_team" id="foulC">3</td>
                                         <td class="score_blank">...</td>
-                                        <td class="blue_team" id="foulD"></td>
+                                        <td class="blue_team" id="foulD">1</td>
                                         <td class="score_blank"></td>
-                                        <td class="blue_team" id="foulE"></td>
+                                        <td class="blue_team" id="foulE">2</td>
                                         <td class="score_blank"></td>
-                                        <td class="blue_team" id="foulF"></td>
+                                        <td class="blue_team" id="foulF">3</td>
                                     </tr>
                                 </div>
                                 </tbody>
@@ -247,22 +376,22 @@
                                 <tbody>
                                 <div class="score_title">
                                     <tr>
-                                        <th class="score_subtitle">disarm A</th>
+                                        <th class="score_subtitle">disarm</th>
                                         <th class="score_blank"></th>
-                                        <th class="score_subtitle">disarm B</th>
+                                        <th class="score_subtitle"></th>
                                         <th class="score_blank"></th>
-                                        <th class="score_subtitle">disarm C</th>
+                                        <th class="score_subtitle"></th>
                                         <th class="score_blank"></th>
-                                        <th class="score_subtitle">disarm D</th>
+                                        <th class="score_subtitle">disarm</th>
                                     </tr>
                                     <tr>
-                                        <td class="red_team" id="disarmA"></td>
+                                        <td class="red_team" id="disarmA">1</td>
                                         <td class="score_blank"></td>
-                                        <td class="red_team" id="disarmB"></td>
+                                        <td class="red_team" id="disarmB">2</td>
                                         <td class="score_blank">...</td>
-                                        <td class="blue_team" id="disarmC"></td>
+                                        <td class="blue_team" id="disarmC">1</td>
                                         <td class="score_blank"></td>
-                                        <td class="blue_team" id="disarmD"></td>
+                                        <td class="blue_team" id="disarmD">2</td>
                                     </tr>
                                 </div>
                                 </tbody>
@@ -270,7 +399,7 @@
                             <table class="finalButtonsTable">
                                 <tr>
                                     <td class="finalButtons"><button id="next_btn" type="button">Next</button></td>
-                                    <td class="finalButtons"><button id="save_btn" type="button">Save</button></td>
+                                    <!-- <td class="finalButtons"><button id="save_btn" type="button">Save</button></td> -->
                                 </tr>
                             </table>
                         <!-- endmain -->
@@ -279,7 +408,7 @@
                             <table id="rightcontent">
                                 <tbody>
                                     <tr>
-                                        <th class="score_subtitle">Score B</th>
+                                        <th  id="player2Blue">BLUE</th>
                                     </tr>
                                     <tr>
                                         <input id="inputscore2" type="numeric" value="0" hidden>
@@ -307,9 +436,6 @@
                                     </table>
                                     <table>
                                         <tr>
-                                            <th>Player 2</th>
-                                        </tr>
-                                        <tr>
                                             <td id="blue_name"></td>
                                         </tr>
                                     </table>
@@ -319,6 +445,22 @@
                     </tr>
                     </tbody>
                 </table>
+            </div>
+            <div>
+                <form id="form_customTime">
+                    <h3>Set Time</h3>
+                    <label>minutes:</label>
+                        <input id="inputMinutes_custom" type="numeric" placeholder="" autocomplete="off" min="0" max="2" value="0"
+                        style="
+                            text-align: center;
+                            resize: horizontal;
+                            width: 50px;
+                        "><br />
+                        <label>seconds:</label>
+                        <input id="inputSeconds_custom" type="numeric" placeholder="" autocomplete="off" min="0" max="59" value="2"
+                        style="text-align: center;resize: horizontal;width: 50px;"><br />
+                        <button type="button" id="submitbtn_customTime" style="margin-top: 5px;">Submit</button>
+                </form>
             </div>
             <div>
                 <hr />
@@ -334,42 +476,38 @@
                         <th>First Name</th>
                         <th>Middle Name</th>
                         <th>Last Name</th>
+                        <th>Organization/Team</th>
                         <th>Gender</th>
                         <th>Weight</th>
-                        <th>Organization/Team</th>
                     </tr>
                     <tr>
-                        <td>Player 1</td>
+                        <td>RED</td>
                         <td><div><input id="first_name_red" type="text" placeholder="First Name" value=""></div></td>
                         <td><div><input id="middle_name_red" type="text" placeholder="Middle Name" value=""></div></td>
                         <td><div><input id="last_name_red" type="text" placeholder="Last Name" value=""></div></td>
-                        <td><div><input id="gender_red" type="text" placeholder="M/F" value=""></div></td>
-                        <td><div><input id="weight_red" type="text" placeholder="kg" value=""></div></td>
                         <td><div><input id="team_red" type="text" placeholder="Team" value=""></div></td>
+                        <td><div><input id="gender_red" type="text" placeholder="M/F" value=""></div></td>
+                        <td><div><input id="weight_red" type="text" placeholder="kg/lb" value=""></div></td>
                     </tr>
                     <tr>
-                        <td>Player 2</td>
+                        <td>BLUE</td>
                         <td><div><input id="first_name_blue" type="text" placeholder="First Name" value=""></div></td>
                         <td><div><input id="middle_name_blue" type="text" placeholder="Middle Name" value=""></div></td>
                         <td><div><input id="last_name_blue" type="text" placeholder="Last Name" value=""></div></td>
-                        <td><div><input id="gender_blue" type="text" placeholder="M/F" value=""></div></td>
-                        <td><dv><input id="weight_blue" type="text" placeholder="kg" value=""></dv></td>
                         <td><div><input id="team_blue" type="text" placeholder="Team" value=""></div></td>
+                        <td><div><input id="gender_blue" type="text" placeholder="M/F" value=""></div></td>
+                        <td><dv><input id="weight_blue" type="text" placeholder="kg/lb" value=""></dv></td>
                     </tr>
                     <tr>
                         <td></td>
-                        <th>Division</td>
+                        <th>Weight Category</th>
+                        <th>Match No.</th>
+                        <th>Division</th>
                         <th>Category</th>
                         <th>Court No.</th>
-                        <th>Match No.</th>
-                        <th>Weight Category</th>
                     </tr>
                     <tr>
-                        <td></td>
-                        <td><input id="division_input" type="text" placeholder="Senior/Junior" autocomplete="off" value=""></td>
-                        <td><input id="category_input" type="text" placeholder="Men/Women" autocomplete="off" value=""></td>
-                        <td><input id="court_input" type="text" placeholder="Court" autocomplete="off" value=""></td>
-                        <td><input id="match_input" type="text" placeholder="Match" autocomplete="off" value=""></td>
+                        <td>Group</td>
                         <td>
                             <div id="divWeight">
                             <select name="weight" id="select_weight_category" onchange="selectedWeights()">
@@ -379,28 +517,38 @@
                                 <option value="light">Light</option>
                                 <option value="welter">Welter</option>
                                 <option value="middle">Middle</option>
-                                <option value="cruiser">Cruiser</option>
+                                <option value="cruiser" selected="selected">Cruiser</option>
                             </select>
                             </div>
                         </td>
+                        <td><input id="match_input" type="text" placeholder="Match" autocomplete="off" value=""></td>
+                        <td><input id="division_input" type="text" placeholder="Senior/Junior" autocomplete="off" value=""></td>
+                        <td><input id="category_input" type="text" placeholder="Men/Women" autocomplete="off" value=""></td>
+                        <td><input id="court_input" type="text" placeholder="Court" autocomplete="off" value=""></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>minutes</td>
+                        <td>seconds</td>
                     </tr>
                     <tr>
                         <td>Time</td>
-                        <td><input id="minutes_input" type="numeric" placeholder="minutes: 0-2" autocomplete="off" value=""></td>
-                        <td><input id="seconds_input" type="numeric" placeholder="seconds: 0-59" autocomplete="off" min="0" max="59" value=""></td>
+                        <td><input id="minutes_input" type="numeric" placeholder="minutes: 0-2" autocomplete="off" value="2"></td>
+                        <td><input id="seconds_input" type="numeric" placeholder="seconds: 0-59" autocomplete="off" min="0" max="59" value="0"></td>
                     </tr>
                     <tr>
-                        <td colspan="100%"><--- Note: navigate the scrollbar to view more content of the form ---></td>
+                        <td colspan="100%"><br/><--- Note: navigate the scrollbar to view more content of the form ---></td>
                     </tr>
                     <tr>
                         <td></td>
                         <td><br /><button type="button" id="submit_current_form">Submit</button></td>
+                        <td><br /><button type="button" id="gameReset_btn">Game Reset</button></td>
                     </tr>
                 </table>
-            </div>
-                <script src="static/scoreboard/scoreboard.js"></script>
+            </div>        
         </main>
     <footer>
+        <script src="static/scoreboard/scoreboard.js"></script>
     </footer>
     </body>
 </html>
