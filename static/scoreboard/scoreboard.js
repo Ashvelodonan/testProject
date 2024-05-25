@@ -489,7 +489,7 @@ submitCurrent.addEventListener("click", () => {
         console.log(`${`secondsInput`} ${secondsInput}`);
         console.log(`${`totalSeconds`} ${totalSeconds}`);
         updateTimer(minutesInput, secondsInput);
-        submitCurrent.disabled = true;
+        //submitCurrent.disabled = true;
         startbtn.disabled = false;
         playbtn.disabled = true;
         resetbtn.disabled = true;
