@@ -1,3 +1,4 @@
+window.onload = function() {
 function printPDF2() {
     let printTable = document.getElementById("tablePartial").innerHTML;
 
@@ -2882,4 +2883,5 @@ function tossCoinResult() {
         console.log(`${"redCoins"} ${redCoins}`);
         console.log(`${"blueCoins"} ${blueCoins}`);
     }
+}
 }
