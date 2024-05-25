@@ -399,7 +399,7 @@ function overallWin() {
     //if winRed == 2 || if winBlue == 2
     if (currentRound == 2){
         if (winRed == 2) {
-            overallWinner.textContent = `${"OVERALL WINNER"} ${playerNameRed}`;
+            overallWinner.textContent = `${"OVERALL WINNER<br />"} ${playerNameRed}`;
             overallWinner.style.border = "2px solid";
             tablePartial.style.background = null;
             tablePartial.classList.add("winnerRedOverall");
@@ -410,7 +410,7 @@ function overallWin() {
             tablePartial.focus();
         }
         if (winBlue == 2) {
-            overallWinner.textContent = `${"OVERALL WINNER"} ${playerNameBlue}`;
+            overallWinner.textContent = `${"OVERALL WINNER<br />"} ${playerNameBlue}`;
             overallWinner.style.border = "2px solid";
             tablePartial.style.background = null;
             tablePartial.classList.add("winnerBlueOverall");
@@ -423,14 +423,14 @@ function overallWin() {
     }
     if (currentRound == 3){
         if (winRed == 2) {
-            overallWinner.textContent = `${"OVERALL WINNER"} ${playerNameRed}`;
+            overallWinner.textContent = `${"OVERALL WINNER<br />"} ${playerNameRed}`;
             overallWinner.style.border = "2px solid";
             tablePartial.style.background = null;
             tablePartial.classList.add("winnerRedOverall");
             tablePartial.focus();
         }
         if (winBlue == 2) {
-            overallWinner.textContent = `${"OVERALL WINNER"} ${playerNameBlue}`;
+            overallWinner.textContent = `${"OVERALL WINNER<br />"} ${playerNameBlue}`;
             overallWinner.style.border = "2px solid";
             tablePartial.style.background = null;
             tablePartial.classList.add("winnerBlueOverall");
