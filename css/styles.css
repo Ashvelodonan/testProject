@@ -1,79 +1,358 @@
-/* Below line is used for online Google font */
-/* @import url(http://fonts.googleapis.com/css?family=Raleway); */
-h2{
-background-color: #FEFFED;
-padding: 30px 35px;
-margin: -10px -50px;
-text-align:center;
-border-radius: 10px 10px 0 0;
+#overallWinner {
+    /* border: 5px solid; */
+    width: 195px;
+    margin-inline: auto;
+    padding: 10px;
+    border-radius: 40px;
 }
-hr{
-margin: 10px -50px;
-border: 0;
-border-top: 1px solid #ccc;
-margin-bottom: 40px;
+
+#printHeader {
+    width: 125px;
 }
-div.container{
-width: 900px;
-height: 610px;
-margin:35px auto;
-font-family: 'Raleway', sans-serif;
+
+.logoh3 {
+    width: 50px;
 }
-div.main{
-width: 300px;
-padding: 10px 50px 25px;
-border: 2px solid gray;
-border-radius: 10px;
-font-family: raleway;
-float:left;
-margin-top:50px;
+
+.winnerRedOverall {
+    background: linear-gradient(to right, red 0%,
+    yellow 50%, yellow 50%, red 100%);
+    font-weight: bold;
 }
-input[type=text],input[type=password]{
-width: 100%;
-height: 40px;
-padding: 5px;
-margin-bottom: 25px;
-margin-top: 5px;
-border: 2px solid #ccc;
-color: #4f4f4f;
-font-size: 16px;
-border-radius: 5px;
+
+.winnerBlueOverall {
+    background: linear-gradient(to right, blue 0%,
+    yellow 50%, yellow 50%, blue 100%);
+    font-weight: bold;
 }
-label{
-color: #464646;
-text-shadow: 0 1px 0 #fff;
-font-size: 14px;
-font-weight: bold;
+
+#suddenDeath {
+    display: inline-block;
+    padding: 3px;
+    border-collapse: separate;
+    white-space: nowrap;
+    /* background-color: ; */
+    background-image: url("images/BALSIG3.jpg");
+    background-size: 150% 100%;/*110% 135%;*/ /*100% 135%;*/
+    background-repeat: no-repeat;
+    background-position: center center;
 }
-center{
-font-size:32px;
+
+#coinTossBoard {
+    display: grid;
+    justify-content: center;
 }
-.note{
-color:red;
+#coinTossCT {
+    display: inline-block;
+    padding: 3px;
+    border-collapse: separate;
+    white-space: nowrap;
+    background-image: url("images/BALSIG3.jpg");
+    background-size: 180% 107%;/*110% 135%;*/ /*100% 135%;*/
+    background-repeat: no-repeat;
+    background-position: center center;
 }
-.valid{
-color:green;
+
+#player1Red {
+    color: red;
+    font-weight: bold;
 }
-.back{
-text-decoration: none;
-border: 1px solid rgb(0, 143, 255);
-background-color: rgb(0, 214, 255);
-padding: 3px 20px;
-border-radius: 2px;
-color: black;
+
+#player2Blue {
+    color: blue;
+    font-weight: bold;
 }
-input[type=button]{
-font-size: 16px;
-background: linear-gradient(#ffbc00 5%, #ffdd7f 100%);
-border: 1px solid #e5a900;
-color: #4E4D4B;
-font-weight: bold;
-cursor: pointer;
-width: 100%;
-border-radius: 5px;
-padding: 10px 0;
-outline:none;
+
+#red_name,
+#blue_name {
+    color: white;
+    font-weight: bold;
 }
-input[type=button]:hover{
-background: linear-gradient(#ffdd7f 5%, #ffbc00 100%);
+
+#table_contents {
+    /* display: inline; */
+    display: grid;
+    justify-content: center;
+    user-select: none;
+    padding: 2px;
+}
+
+#tablePartial {
+    display: grid;
+    justify-content: center;
+    padding: 2px;
+    /* background: white; */
+    box-sizing: border-box !important;
+}
+
+#showHide,
+#save_btn {
+    margin: 2px;
+}
+
+#currentMatchData {
+    width: 510px;
+}
+
+#currentMatchData,
+#winnersData {
+    display: inline-block;
+    margin-right: 20px;
+    margin-left: 20px;
+    border: 5px solid black;
+}
+
+#displayVS,
+#weight_category_selected,
+#suddenDeathMatch {
+    color: white;
+    /* mix-blend-mode: difference; */
+}
+
+#gameMatchForm {
+    width: 100%;
+    display: grid;
+    position: relative;
+    border: 5px solid black;
+    table-layout: auto !important;
+    overflow: auto;
+    white-space: nowrap;
+    /* background: white; */
+    background-color: rgba(255, 255, 255, 50%);
+}
+
+#winnersData table th {
+    border: 1px solid black;
+    margin: auto;
+    padding: 5px;
+    text-align: center;
+}
+
+#form_SD,
+#input_CT,
+#form_customTime {
+    padding: 5px;
+    width: 245px;
+    display: inline-block;
+    margin-top: 5px;
+    background-color: rgba(255, 255, 255, 50%);
+    border-radius: 50px;
+}
+
+.half-color {
+    background-image: url("images/BALSIG4.png");
+    background-size: 145% 185%; /*100% 135%;*/ /*100% 135%*/
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.centerText {
+    text-align: center !important;
+}
+
+.dropdown-menu[data-bs-popper] {
+    left: 0;
+    right: 100px;
+}
+
+#currentMatchData table td {
+    font-weight: bold;
+    padding-right: 35px;
+}
+
+#currentMatchData table td span {
+    font-weight: normal;
+}
+
+table {
+    width: 100%;
+    /* table-layout: auto; */
+}
+
+.py-5 {
+    padding-top: 1rem !important;
+}
+
+body {
+    background: linear-gradient(
+        to right,
+        black 0%,
+        red 50%,
+        blue 50%,
+        black 100%)
+}
+
+.finalButtonsTable {
+    display: grid;
+    place-items: center;
+    margin-top: 5px;
+}
+
+.advantage_points {
+    width: 10px;
+    color: white;
+}
+
+#advPointA,
+#advPointB,
+#advPointC,
+#advPointD,
+#advPointE,
+#advPointF {
+    border: 5px solid green;
+    user-select: none;
+}
+
+#message,
+#messageNew,
+#messageUser {
+    display: none;
+    text-align: left;
+    background: #f1f1f1;
+    color: #000;
+    position: relative;
+    padding: 20px;
+    margin-top: 5px;
+}
+
+#message p,
+#messageNew p,
+#messageUser p {
+    padding: 10px 35px;
+    font-size: 18px;
+}
+
+/* Add a green text color and a checkmark when the requirements are right */
+.valid {
+    color: green;
+}
+
+.valid:before {
+    position: relative;
+    left: -35px;
+}
+
+/* Add a red text color and an "x" icon when the requirements are wrong */
+.invalid {
+    color: red;
+}
+
+.invalid:before {
+    position: relative;
+    left: -35px;
+    /* content: "&#10006;"; */
+}
+
+.regButtons {
+    position: relative;
+    margin: auto;
+}
+
+#left,
+#right {
+    vertical-align: top;
+}
+
+#scoreboard_table {
+    display: inline;
+    position: relative;
+}
+
+#scoreboard_table_row {
+    border: 3px solid black;
+}
+
+#scoreboard_rounds,
+/* #scoreboard_scores, */
+#scoreboard_adder,
+#scoreboard_fouls,
+#scoreboard_disarm {
+    display: grid;
+    place-items: center;
+}
+
+.score_title {
+    font-size: 25px;
+}
+
+.score_blank {
+    opacity: 0;
+    empty-cells: hide;
+    border: none;
+}
+
+#round1,
+#round2,
+#round3 {
+    border: 5px solid green;
+    background-color: white;
+}
+
+#score1,
+#score2 {
+    font-size: 100px;
+}
+
+.red_team_adder {
+    border: 5px solid red;
+    font-size: 15px;
+    font-weight: bold;
+    width: 50%;
+    user-select: none;
+    background-color: black;
+    color: white;
+    font-weight: bold;
+}
+
+
+.blue_team_adder {
+    border: 5px solid blue;
+    font-size: 15px;
+    font-weight: bold;
+    width: 50%;
+    user-select: none;
+    background: black;
+    color: white;
+    font-weight: bold;
+}
+
+th.score_subtitle,
+td.advPoint {
+    font-size: 8px;
+    font-weight: bold;
+    height: 0px;
+    border: none;
+    color: white;
+}
+
+td.red_team {
+    border: 5px solid red;
+    width: 40px;
+    height: 40px;
+    padding: 0px 15px 0px;
+    background-color: black;
+    color: white;
+    font-weight: bold;
+}
+
+td.blue_team {
+    border: 5px solid blue;
+    width: 40px;
+    height: 40px;
+    padding: 0px 15px 0px;
+    background: black;
+    color: white;
+    font-weight: bold;
+}
+
+iframe{
+    margin: auto;
+    width: 200px;
+    overflow: hidden;
+    border: none;
+    height: 118px; /*118px or 100%*/
+}
+
+#timerSudden_outside {
+    height: 100px;
 }
