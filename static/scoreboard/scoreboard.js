@@ -1,4 +1,3 @@
-window.onload = function() {
 function printPDF2() {
     let printTable = document.getElementById("tablePartial").innerHTML;
 
@@ -34,6 +33,7 @@ function printPDF2() {
     docprint.document.close();    
 }
 
+window.onload = function() {
 let timerInterval;
 let timerRunning = false;
 let totalSeconds = 0;
