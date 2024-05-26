@@ -1309,6 +1309,10 @@ function runtime() {
 }
 function updateTimer(minutesInput, secondsInput) {
     console.log(`${`totalSeconds`} ${totalSeconds}`);
+    if (totalSeconds == -1) {
+        minutesInput = 0;
+        secondsInput = 0;
+    }
     displayTime.innerHTML = `${minutesInput < 10 ? '0' + minutesInput : minutesInput}:${secondsInput < 10 ? '0' + secondsInput : secondsInput}`;
 }
 function resetForFoul() {
