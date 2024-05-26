@@ -1208,6 +1208,17 @@ function playCountdown() {
     playbtn.disabled = true;
     stopbtn.disabled = false;
 }
+function playAudio() {
+    if (totalSeconds == 0 && totalSecondsSD == 0) {
+        var audio1 = new Audio("static/audio/timesup.mp3");
+        audio1.play();
+    }
+    if (startSD_audio == 1 || (startActivate == 1 && totalSeconds > 0)) {
+        var audio2 = new Audio("static/audio/start.mp3");
+        audio2.play();
+        startSD_audio = 0;
+    }
+}
 function runtime() {
     if (!timerRunning) {
     totalSeconds = minutesInput * 60 + secondsInput;
@@ -1218,11 +1229,15 @@ function runtime() {
         secondsInput = totalSeconds % 60;
         updateTimer(minutesInput, secondsInput);
         console.log(`${`totalSeconds2`} ${totalSeconds}`);
-        if (totalSeconds <= 0) {
+        if (startActivate == 1 && totalSeconds == 0) {
+            playAudio();
+        }
+        if (totalSeconds < 0) {
             console.log(`${`totalSeconds`} ${totalSeconds}`);
             if (totalSeconds == -1) {
-                minutesInput = 0;
-                secondsInput = 0;
+                totalSeconds = 0;
+                //minutesInput = 0;
+                //secondsInput = 0;
             }
             clearInterval(timerInterval);
             //alert('Timer reached zero!');
@@ -2446,6 +2461,7 @@ suddenDeathBbtn.addEventListener("click", () => {
         console.log(`${suddenDeathScoreB}`);
     }
 });
+var startSD_audio = 0;
 startbtn_SD.addEventListener("click", () => {
     timerRunningSD = false;
     runtimeSD();
@@ -2459,6 +2475,8 @@ startbtn_SD.addEventListener("click", () => {
     showFormSD();
     showSDCTval = 0;
     showSDCT();
+    startSD_audio = 1;
+    playAudio();
 });
 playbtn_SD.addEventListener("click", () => {
     playCountdownSD();
@@ -2549,8 +2567,16 @@ function runtimeSD() {
         valueSecondsSD = totalSecondsSD % 60;
         updateTimerSD(valueMinutesSD, valueSecondsSD);
         console.log(`${`totalSecondsSD1`} ${totalSecondsSD}`);
-        if (totalSecondsSD <= 0) {
+        if (totalSecondsSD == 0) {
+            playAudio();
+        }
+        if (totalSecondsSD < 0) {
             console.log(`${`totalSecondsSD`} ${totalSecondsSD}`);
+            if (totalSecondsSD == -1) {
+                totalSecondsSD = 0;
+                //minutesInput = 0;
+                //secondsInput = 0;
+            }
             clearInterval(timerIntervalSD);
             //alert('Timer reached zero!');
             console.log(suddenDeathScoreA);
