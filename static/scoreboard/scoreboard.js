@@ -1210,7 +1210,7 @@ function playCountdown() {
     stopbtn.disabled = false;
 }
 function playAudio() {
-    if (totalSeconds == 0 && totalSecondsSD == 0) {
+    if (flipSound == 0 && (totalSeconds == 0 && totalSecondsSD == 0)) {
         var audio1 = new Audio("static/audio/timesup.mov");
         audio1.play();
     }
@@ -1218,6 +1218,11 @@ function playAudio() {
         var audio2 = new Audio("static/audio/start.mov");
         audio2.play();
         startSD_audio = 0;
+    }
+    if (flipSound == 1) {
+        var audio3 = new Audio("static/audio/coinFlip.mov");
+        audio3.play();
+        flipSound = 0;
     }
 }
 function runtime() {
@@ -2779,12 +2784,15 @@ resetCoinToss.addEventListener("click", () => {
     }
 });
 var i = 1;
+var flipSound = 0;
 flipCoinToss.addEventListener("click", () => {
     resetCoinToss.disabled = true;
     submitToss.disabled = true;
     resetColorToss();
     console.log("flipCoinToss");
     console.log(i);
+    flipSound = 1;
+    playAudio();
     coin.style.animation = "none";
     if (i) {
         coin.style.transform = "rotateY(0)";
@@ -2799,7 +2807,7 @@ flipCoinToss.addEventListener("click", () => {
     tails = 0;
     if (i) {
         setTimeout(function () {
-            coin.style.animation = "spin-heads 2s forwards";
+            coin.style.animation = "spin-heads 1.3s forwards";
         }, 1000);
         heads+=1;
         headsTotal+=1;
@@ -2807,7 +2815,7 @@ flipCoinToss.addEventListener("click", () => {
     }
     else {
         setTimeout(function () {
-            coin.style.animation = "spin-tails 2s forwards";
+            coin.style.animation = "spin-tails 1.3s forwards";
         }, 1000);
         tails+=2;
         tailsTotal+=1;
