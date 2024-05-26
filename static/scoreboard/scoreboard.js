@@ -2202,16 +2202,16 @@ function determineWinner() {
         alert(`RED WINS`);
         nextbtn.disabled = false;
         //if tester
-        if (inputscore1.value < inputscore2.value &&
-            (subTotalFoul1 < subTotalFoul2 || disarm1 < disarm2)
-            && (subTotalFoul2 =! 3 || disarm2 != 2)) {
-                console.log(`${`testBlueWins1`}`);
-        }
-        if (inputscore1.value > inputscore2.value &&
-            (subTotalFoul1 > subTotalFoul2 || disarm1 > disarm2)
-            && (subTotalFoul1 != 3 || disarm1 != 2)) {
-                console.log(`${`testRedWins1`}`);
-        }
+        // if (inputscore1.value < inputscore2.value &&
+        //     (subTotalFoul1 < subTotalFoul2 || disarm1 < disarm2)
+        //     && (subTotalFoul2 =! 3 || disarm2 != 2)) {
+        //         console.log(`${`testBlueWins1`}`);
+        // }
+        // if (inputscore1.value > inputscore2.value &&
+        //     (subTotalFoul1 > subTotalFoul2 || disarm1 > disarm2)
+        //     && (subTotalFoul1 != 3 || disarm1 != 2)) {
+        //         console.log(`${`testRedWins1`}`);
+        // }
     } else if (
         (inputscore1.value < inputscore2.value || subTotalFoul1 == 3 || disarm1 == 2) ||
 
@@ -2237,11 +2237,11 @@ function determineWinner() {
         console.log(`BLUE WINS`);
         alert(`BLUE WINS`);
         nextbtn.disabled = false;
-        if (inputscore1.value < inputscore2.value &&
-            (subTotalFoul1 < subTotalFoul2 || disarm1 < disarm2)
-            && (subTotalFoul2 =! 3 || disarm2 != 2)) {
-                console.log(`${`testBlueWins2`}`);
-        }
+        // if (inputscore1.value < inputscore2.value &&
+        //     (subTotalFoul1 < subTotalFoul2 || disarm1 < disarm2)
+        //     && (subTotalFoul2 =! 3 || disarm2 != 2)) {
+        //         console.log(`${`testBlueWins2`}`);
+        // }
     } else {
         console.log(`${`elseTie`}`);
         if (currentRound == 1) {
