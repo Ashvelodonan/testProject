@@ -504,6 +504,7 @@ submitCurrent.addEventListener("click", () => {
 });//submitCurrent
 startbtn.addEventListener("click", () => {
     startActivate = 1;
+    playAudio();
     advantagePoint();
     console.log(`${`Current Round:`} ${currentRound}`);
     submitbtn_customTime.disabled = true;
