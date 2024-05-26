@@ -2614,7 +2614,7 @@ function updateTimerSD(valueMinutesSD, valueSecondsSD) {
         valueMinutesSD = 0;
         valueSecondsSD = 0;
     }
-    if (showSDBoardval == 1) {
+    if (showTIEformsval == 1) { 
         displayTimeSD.innerHTML = `${valueMinutesSD < 10 ? '0' + valueMinutesSD : valueMinutesSD}:${valueSecondsSD < 10 ? '0' + valueSecondsSD : valueSecondsSD}`;
     }
 }
