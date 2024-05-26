@@ -2743,8 +2743,8 @@ resetCoinToss.addEventListener("click", () => {
         showFormCT();
         showSDCTval = 1;
         showSDCT();
-        headsTotal = 0;
-        tailsTotal = 0;
+        headsTotal = headsTotal;
+        tailsTotal = tailsTotal;
         updateStats();
         coin.style.animation = "none";
         coin.style.transform = "";
