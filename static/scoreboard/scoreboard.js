@@ -291,6 +291,12 @@ function gameReset() {
         resetDefaultSD();
         resetDefaultCT();
         resetColorToss();
+        if (showCTBoardval == 0) {
+            coin.style.animation = "none";
+            coin.style.transform = "";
+        }
+        headsTotal = 0;
+        tailsTotal = 0;
         showSDCTval = 0;
         showSDCT();
         showFormCTval = 0;
