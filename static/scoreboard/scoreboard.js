@@ -574,6 +574,9 @@ nextbtn.addEventListener("click", () => {
         scoreTwo.innerHTML = `0` + inputScore2.value;
         console.log(`${defaultScoreOne}`);
         console.log(`${defaultScoreTwo}`);
+        if (winRed == 2 || winBlue == 2) {
+            startbtn.disabled = true;
+        }
     }
 });
 function inputGameForm() {
