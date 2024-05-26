@@ -1210,11 +1210,11 @@ function playCountdown() {
 }
 function playAudio() {
     if (totalSeconds == 0 && totalSecondsSD == 0) {
-        var audio1 = new Audio("static/audio/timesup.mp3");
+        var audio1 = new Audio("static/audio/timesup.mov");
         audio1.play();
     }
     if (startSD_audio == 1 || (startActivate == 1 && totalSeconds > 0)) {
-        var audio2 = new Audio("static/audio/start.mp3");
+        var audio2 = new Audio("static/audio/start.mov");
         audio2.play();
         startSD_audio = 0;
     }
