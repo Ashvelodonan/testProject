@@ -707,7 +707,8 @@ function nextRound() {
                 && (subTotalFoul2 != 3 && disarm2 != 2)
                 && (subTotalFoul2 == 0 && disarm2 == 0
                 || (subTotalFoul2 == subTotalFoul1 && disarm2 == disarm1)
-                || (subTotalFoul2 > subTotalFoul1 || disarm2 > disarm1))
+                || (subTotalFoul2 > subTotalFoul1 || disarm2 > disarm1)
+                || (subTotalFoul2 < subTotalFoul1 || disarm2 < disarm1))
                 ) {
                 winner2_R1.innerHTML = "(score)";
                 console.log("scorePrint");
@@ -784,7 +785,8 @@ function nextRound() {
                 && (subTotalFoul1 != 3 && disarm1 != 2)
                 && (subTotalFoul1 == 0 && disarm1 == 0
                 || (subTotalFoul2 == subTotalFoul1 && disarm2 == disarm1)
-                || (subTotalFoul2 < subTotalFoul1 || disarm2 < disarm1))
+                || (subTotalFoul2 < subTotalFoul1 || disarm2 < disarm1)
+                || (subTotalFoul2 > subTotalFoul1 || disarm2 > disarm1))
                 ) {
                 winner1_R1.innerHTML = "(score)";
                 console.log("scorePrint");
@@ -869,8 +871,9 @@ function nextRound() {
                 && (subTotalFoul2 != 3 && disarm2 != 2)
                 && (subTotalFoul2 == 0 && disarm2 == 0
                 || (subTotalFoul2 == subTotalFoul1 && disarm2 == disarm1)
-                || (subTotalFoul2 > subTotalFoul1 || disarm2 > disarm1))
-            ) {
+                || (subTotalFoul2 > subTotalFoul1 || disarm2 > disarm1)
+                || (subTotalFoul2 < subTotalFoul1 || disarm2 < disarm1))
+                ) {
                 winner2_R2.innerHTML = "(score)";
                 console.log("scorePrint");
             }
@@ -946,7 +949,8 @@ function nextRound() {
                 && (subTotalFoul1 != 3 && disarm1 != 2)
                 && (subTotalFoul1 == 0 && disarm1 == 0
                 || (subTotalFoul2 == subTotalFoul1 && disarm2 == disarm1)
-                || (subTotalFoul2 < subTotalFoul1 || disarm2 < disarm1))
+                || (subTotalFoul2 < subTotalFoul1 || disarm2 < disarm1)
+                || (subTotalFoul2 > subTotalFoul1 || disarm2 > disarm1))
                 ) {
                 winner1_R2.innerHTML = "(score)";
                 console.log("scorePrint");
@@ -1032,7 +1036,8 @@ function nextRound() {
                 && (subTotalFoul2 != 3 && disarm2 != 2)
                 && (subTotalFoul2 == 0 && disarm2 == 0
                 || (subTotalFoul2 == subTotalFoul1 && disarm2 == disarm1)
-                || (subTotalFoul2 > subTotalFoul1 || disarm2 > disarm1))
+                || (subTotalFoul2 > subTotalFoul1 || disarm2 > disarm1)
+                || (subTotalFoul2 < subTotalFoul1 || disarm2 < disarm1))
                 ) {
                 winner2_R3.innerHTML = "(score)";
                 console.log("scorePrint");
@@ -1109,7 +1114,8 @@ function nextRound() {
                 && (subTotalFoul1 != 3 && disarm1 != 2)
                 && (subTotalFoul1 == 0 && disarm1 == 0
                 || (subTotalFoul2 == subTotalFoul1 && disarm2 == disarm1)
-                || (subTotalFoul2 < subTotalFoul1 || disarm2 < disarm1))
+                || (subTotalFoul2 < subTotalFoul1 || disarm2 < disarm1)
+                || (subTotalFoul2 > subTotalFoul1 || disarm2 > disarm1))
                 ) {
                 winner1_R3.innerHTML = "(score)";
                 console.log("scorePrint");
