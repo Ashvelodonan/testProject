@@ -368,11 +368,9 @@ function gameReset() {
         submitbtn_customTime.disabled = false;
         overallWinner.textContent = "";
         overallWinner.style.border = "";
-        startActivate = 0;
-        if (showCTBoardval == 1) {
-            coin.style.animation = "none";
-            coin.style.transform = "";
-        }
+        startActivate = 0;        
+        totalSecondsSD = 0;
+        totalSeconds = 0;
         i=1;
     }
     if (currentRound == 2) {
@@ -2614,9 +2612,10 @@ function updateTimerSD(valueMinutesSD, valueSecondsSD) {
         valueMinutesSD = 0;
         valueSecondsSD = 0;
     }
-    if (showTIEformsval == 1) { 
-        displayTimeSD.innerHTML = `${valueMinutesSD < 10 ? '0' + valueMinutesSD : valueMinutesSD}:${valueSecondsSD < 10 ? '0' + valueSecondsSD : valueSecondsSD}`;
-    }
+    displayTimeSD.innerHTML = `${valueMinutesSD < 10 ? '0' + valueMinutesSD : valueMinutesSD}:${valueSecondsSD < 10 ? '0' + valueSecondsSD : valueSecondsSD}`;
+    // if (showTIEformsval == 1) { 
+    //     displayTimeSD.innerHTML = `${valueMinutesSD < 10 ? '0' + valueMinutesSD : valueMinutesSD}:${valueSecondsSD < 10 ? '0' + valueSecondsSD : valueSecondsSD}`;
+    // }
 }
 submitbtn_SD.addEventListener("click", () => {
     valueMinutesSD = parseInt(inputMinutes_SD.value);
