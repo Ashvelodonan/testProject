@@ -623,7 +623,7 @@ function nextRound() {
         (subTotalFoul2 == 3 || disarm2 == 2)
         ) || (
         inputscore1.value > inputscore2.value &&
-        ((subTotalFoul1 > subTotalFoul2 && subTotalFoul1 != 3)
+        (((subTotalFoul1 == subTotalFoul2 || subTotalFoul1 > subTotalFoul2) && subTotalFoul1 != 3)
         || (disarm1 > disarm2 && disarm1 != 2)
         || (subTotalFoul1 < subTotalFoul2 && subTotalFoul1 != 3)
         || (disarm1 < disarm2 && disarm1 != 2)
@@ -649,7 +649,7 @@ function nextRound() {
         (subTotalFoul1 == 3 || disarm1 == 2)
         ) || (
         inputscore1.value < inputscore2.value &&
-        ((subTotalFoul1 < subTotalFoul2 && subTotalFoul2 != 3)
+        (((subTotalFoul1 == subTotalFoul2 || subTotalFoul1 < subTotalFoul2) && subTotalFoul2 != 3)
         || (disarm1 < disarm2 && disarm2 != 2)
         || (subTotalFoul1 > subTotalFoul2 && subTotalFoul2 != 3)
         || (disarm1 > disarm2 && disarm2 != 2)
@@ -673,8 +673,9 @@ function nextRound() {
         console.log(`${`winRed:`} ${winRed}`);
         console.log(`${`winBlue:`} ${winBlue}`);
         if ((winRed > 0 && winRed > winBlue) ||
-            (inputscore1.value > inputscore2.value && subTotalFoul1 != 3 && disarm1 != 2) &&
-            (inputscore1.value > inputscore2.value && subTotalFoul2 == 3 && disarm2 == 2) ||
+            (inputscore1.value > inputscore2.value && subTotalFoul1 != 3 && disarm1 != 2 && (subTotalFoul2 == 3 || disarm2 == 2 || subTotalFoul2 == subTotalFoul1)) ||
+            (inputscore1.value > inputscore2.value && subTotalFoul1 != 3 && disarm1 != 2 && subTotalFoul2 == 3 && disarm2 == 2)
+            ||
 
             (inputscore1.value == inputscore2.value &&
             (suddenDeathScoreA > suddenDeathScoreB || subTotalFoul1 < subTotalFoul2
@@ -713,7 +714,7 @@ function nextRound() {
                 || inputscore1.value == inputscore2.value)
                 && (subTotalFoul2 == 3 || disarm2 == 2 || subTotalFoul1 < subTotalFoul2 || disarm1 < disarm2)
                 ) {
-                if (subTotalFoul2 == 3 && disarm2 != 2) {
+                if ((subTotalFoul2 == 3 && disarm2 != 2) || (inputscore1.value > inputscore2.value && (subTotalFoul2 == 3 || disarm2 == 2 || subTotalFoul2 == subTotalFoul1))) {
                     winner2_R1.innerHTML = "(foul)";
                     console.log("winner2_R1.innerHTML foulR1");
                 }
@@ -1143,11 +1144,11 @@ function nextRound() {
                 ) {
                 winner2_R3.innerHTML = "(advPoint)";
                 console.log("advPointR3");
-            }            
+            }
             winner1_R3.innerHTML = currentWinnerR3;
             score1_R3.innerHTML = currentScoreR3;
             score2_R3.innerHTML = currentloserScoreR3;
-            printSummary();            
+            printSummary();
             winRed3 += winRed;
             subFinalScore1 += parseInt(currentScoreR3);
             subFinalScore2 += parseInt(currentloserScoreR3);
@@ -1227,7 +1228,7 @@ function nextRound() {
                 ) {
                 winner1_R3.innerHTML = "(score)";
                 console.log("scorePrintR3");
-            }            
+            }
             if (inputscore1.value == inputscore2.value
                 && (subTotalFoul2 == 0 && disarm2 == 0)
                 && (subTotalFoul1 == 0 && disarm1 == 0)
@@ -1237,11 +1238,11 @@ function nextRound() {
                 ) {
                 winner1_R3.innerHTML = "(advPoint)";
                 console.log("advPointR3");
-            }            
+            }
             winner2_R3.innerHTML = currentWinnerR3;
             score1_R3.innerHTML = currentloserScoreR3;
             score2_R3.innerHTML = currentScoreR3;
-            printSummary();
+            printSummary();            
             winBlue3 += winBlue;
             subFinalScore1 += parseInt(currentloserScoreR3);
             subFinalScore2 += parseInt(currentScoreR3);
@@ -1267,6 +1268,7 @@ function nextRound() {
         console.log(`${`same`}${currentRound}`);
     }
 } //nextRound()
+    
 playbtn.addEventListener("click", playCountdown); //playbtn
 stopbtn.addEventListener("click", stopCountdown); //stopbtn
 //resetbtn.addEventListener("click", resetCountdown);
@@ -2293,7 +2295,7 @@ function determineWinner() {
         (subTotalFoul2 == 3 || disarm2 == 2)
         ) || (
         inputscore1.value > inputscore2.value &&
-        ((subTotalFoul1 > subTotalFoul2 && subTotalFoul1 != 3)
+        (((subTotalFoul1 == subTotalFoul2 || subTotalFoul1 > subTotalFoul2) && subTotalFoul1 != 3)
         || (disarm1 > disarm2 && disarm1 != 2)
         || (subTotalFoul1 < subTotalFoul2 && subTotalFoul1 != 3)
         || (disarm1 < disarm2 && disarm1 != 2)
@@ -2312,6 +2314,17 @@ function determineWinner() {
         console.log(`RED WINS`);
         alert(`RED WINS`);
         nextbtn.disabled = false;
+        //if tester
+        // if (inputscore1.value < inputscore2.value &&
+        //     (subTotalFoul1 < subTotalFoul2 || disarm1 < disarm2)
+        //     && (subTotalFoul2 =! 3 || disarm2 != 2)) {
+        //         console.log(`${`testBlueWins1`}`);
+        // }
+        // if (inputscore1.value > inputscore2.value &&
+        //     (subTotalFoul1 > subTotalFoul2 || disarm1 > disarm2)
+        //     && (subTotalFoul1 != 3 || disarm1 != 2)) {
+        //         console.log(`${`testRedWins1`}`);
+        // }
     } else if (
         (inputscore1.value < inputscore2.value && subTotalFoul2 != 3 && disarm2 != 2 && subTotalFoul1 == 3 || disarm1 == 2) ||
 
@@ -2323,7 +2336,7 @@ function determineWinner() {
         (subTotalFoul1 == 3 || disarm1 == 2)
         ) || (
         inputscore1.value < inputscore2.value &&
-        ((subTotalFoul1 < subTotalFoul2 && subTotalFoul2 != 3)
+        (((subTotalFoul1 == subTotalFoul2 || subTotalFoul1 < subTotalFoul2) && subTotalFoul2 != 3)
         || (disarm1 < disarm2 && disarm2 != 2)
         || (subTotalFoul1 > subTotalFoul2 && subTotalFoul2 != 3)
         || (disarm1 > disarm2 && disarm2 != 2)
@@ -2340,7 +2353,12 @@ function determineWinner() {
         loserName = nameRedValue;
         console.log(`BLUE WINS`);
         alert(`BLUE WINS`);
-        nextbtn.disabled = false;        
+        nextbtn.disabled = false;
+        // if (inputscore1.value < inputscore2.value &&
+        //     (subTotalFoul1 < subTotalFoul2 || disarm1 < disarm2)
+        //     && (subTotalFoul2 =! 3 || disarm2 != 2)) {
+        //         console.log(`${`testBlueWins2`}`);
+        // }
     } else {
         console.log(`${`elseTie`}`);
         if (currentRound == 1) {
@@ -2382,7 +2400,7 @@ function determineWinner() {
         suddenDeathBoard.focus();
     }
 }
-
+    
 setInterval(showTime, 1000);
 // Defining showTime funcion
 function showTime() {
