@@ -1521,6 +1521,7 @@ function disarmRed() {
                 return false;
             } else {
                 console.log("disarmRedB1");
+                blueAdd.click();
                 if (disarmB_value == 0 && disarmA_value == 1) {
                     advPointVoidRed();
                     disarmB.style.backgroundColor = 'red';
@@ -1529,7 +1530,7 @@ function disarmRed() {
                     disarm1 += disarmB_value;
                     stopbtn.click();
                     playbtn.disabled = true;
-                    blueAdd.click();
+                    //blueAdd.click();
                     console.log(`BLUE WINS from disarm`);
                     alert(`BLUE WINS from disarm`);
                     determineWinner();
@@ -1565,6 +1566,7 @@ function disarmBlue() {
                 return false;
             } else {
                 console.log("disarmBlueD1");
+                redAdd.click();
                 if (disarmD_value == 0 && disarmC_value == 1) {
                     advPointVoidBlue();
                     disarmD.style.backgroundColor = 'blue';
@@ -1574,7 +1576,7 @@ function disarmBlue() {
                     console.log(disarm2);
                     stopbtn.click();
                     playbtn.disabled = true;
-                    redAdd.click();
+                    //redAdd.click();
                     console.log(`RED WINS from disarm`);
                     alert(`RED WINS from disarm`);
                     determineWinner();
