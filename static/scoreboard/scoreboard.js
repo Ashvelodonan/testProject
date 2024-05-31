@@ -372,6 +372,9 @@ function gameReset() {
         totalSecondsSD = 0;
         totalSeconds = 0;
         i=1;
+        minutesInput = 0;
+        secondsInput = 0;
+        updateTimer(minutesInput, secondsInput);
     }
     if (currentRound == 2) {
         secondRound.style.backgroundColor = "white";
@@ -610,56 +613,48 @@ function nextRound() {
     startActivate = 0;
     if (totalSeconds > 0) {
         determineWinner();
-    }
-    if ((inputscore1.value > inputscore2.value && (subTotalFoul1 != 3 && disarm1 != 2)) &&
-
-        (inputscore1.value > inputscore2.value && (subTotalFoul2 == 3 || disarm2 == 2)) ||
-
+    } //WinRedORBlue
+    if (subTotalFoul2 == 3 || disarm2 == 2 ||
+        (inputscore1.value > inputscore2.value && subTotalFoul1 != 3 && disarm1 != 2 &&
+         (subTotalFoul1 != 3 && disarm1 != 2 && (subTotalFoul1 != 3 && disarm1 != 2 || subTotalFoul1 == subTotalFoul2 || disarm1 == disarm2))) ||
         (inputscore1.value == inputscore2.value &&
-        (suddenDeathScoreA > suddenDeathScoreB || subTotalFoul1 < subTotalFoul2
-        || disarm1 < disarm2 || (redCoins == heads && redCoins != 0) || (redCoins == tails && redCoins != 0))
-        ) || (
-        inputscore1.value < inputscore2.value &&
-        (subTotalFoul2 == 3 || disarm2 == 2)
-        ) || (
-        inputscore1.value > inputscore2.value &&
-        (((subTotalFoul1 == subTotalFoul2 || subTotalFoul1 > subTotalFoul2) && subTotalFoul1 != 3 && disarm1 != 2)
-        || (disarm1 > disarm2 && disarm1 != 2 && subTotalFoul1 != 3)
-        || (subTotalFoul1 < subTotalFoul2 && subTotalFoul1 != 3 && disarm1 != 2)
-        || (disarm1 < disarm2 && disarm1 != 2 && subTotalFoul1 != 3)
-        )
-        )
-
-    || (inputscore1.value == inputscore2.value && ((advPoint1_R1_value == 1 && currentRound == 1)
-    || (advPoint1_R2_value == 1 && currentRound == 2)
-    || (advPoint1_R3_value == 1 && currentRound == 3)
-    || (valueFoulD == 1 && valueFoulA != 1) || (valueFoulE == 1 && valueFoulB != 1)))) {
+         ((suddenDeathScoreA > suddenDeathScoreB && subTotalFoul1 == subTotalFoul2 && disarm1 == disarm2) ||
+          (subTotalFoul1 < subTotalFoul2 && disarm1 < disarm2) ||
+          disarm1 < disarm2 ||
+          (redCoins == heads && redCoins != 0) || (redCoins == tails && redCoins != 0))) ||
+        (inputscore1.value < inputscore2.value && subTotalFoul2 == 3) ||
+        (inputscore1.value < inputscore2.value && disarm2 == 2) ||
+        (inputscore1.value == inputscore2.value &&
+         ((advPoint1_R1_value == 1 && currentRound == 1) ||
+          (advPoint1_R2_value == 1 && currentRound == 2) ||
+          (advPoint1_R3_value == 1 && currentRound == 3) ||
+          (subTotalFoul1 > subTotalFoul2 && disarm1 < disarm2 && subTotalFoul1 != 3) ||
+          (subTotalFoul1 < subTotalFoul2 && disarm1 < disarm2 && subTotalFoul1 != 3) ||
+          (disarm1 == disarm2 && subTotalFoul1 < subTotalFoul2) ||
+          (disarm1 < disarm2 && valueFoulD == 1 && valueFoulA != 1) ||
+          (disarm1 < disarm2 && valueFoulE == 1 && valueFoulB != 1)))) {
         winRed += 1;
         console.log("winRed += 1;");
     }
-    if ((inputscore1.value < inputscore2.value && (subTotalFoul2 != 3 && disarm2 != 2)) &&
-
-        (inputscore1.value < inputscore2.value && (subTotalFoul1 == 3 || disarm1 == 2)) ||
-
+    if (subTotalFoul1 == 3 || disarm1 == 2 ||
+        (inputscore1.value < inputscore2.value && subTotalFoul2 != 3 && disarm2 != 2 &&
+         (subTotalFoul2 != 3 && disarm2 != 2 && (subTotalFoul2 != 3 && disarm2 != 2 || subTotalFoul1 == subTotalFoul2 || disarm1 == disarm2))) ||
         (inputscore1.value == inputscore2.value &&
-        (suddenDeathScoreA < suddenDeathScoreB || subTotalFoul1 > subTotalFoul2
-        || disarm1 > disarm2 || (blueCoins == heads && blueCoins != 0) || (blueCoins == tails && blueCoins != 0))
-        ) || (
-        inputscore1.value > inputscore2.value &&
-        (subTotalFoul1 == 3 || disarm1 == 2)
-        ) || (
-        inputscore1.value < inputscore2.value &&
-        (((subTotalFoul1 == subTotalFoul2 || subTotalFoul1 < subTotalFoul2) && subTotalFoul2 != 3 && disarm2 != 2)
-        || (disarm1 < disarm2 && disarm2 != 2 && subTotalFoul2 != 3)
-        || (subTotalFoul1 > subTotalFoul2 && subTotalFoul2 != 3 && disarm2 != 2)
-        || (disarm1 > disarm2 && disarm2 != 2 && subTotalFoul2 != 3)
-        )
-        )
-
-    || (inputscore1.value == inputscore2.value && ((advPoint2_R1_value == 1 && currentRound == 1)
-    || (advPoint2_R2_value == 1 && currentRound == 2)
-    || (advPoint2_R3_value == 1 && currentRound == 3)
-    || (valueFoulA == 1 && valueFoulD != 1) || (valueFoulB == 1 && valueFoulE != 1)))) {
+         ((suddenDeathScoreA < suddenDeathScoreB && subTotalFoul1 == subTotalFoul2 && disarm1 == disarm2) ||
+          (subTotalFoul1 > subTotalFoul2 && disarm1 > disarm2) ||
+          disarm1 > disarm2 ||
+          (blueCoins == heads && blueCoins != 0) || (blueCoins == tails && blueCoins != 0))) ||
+        (inputscore1.value > inputscore2.value && subTotalFoul1 == 3) ||
+        (inputscore1.value > inputscore2.value && disarm1 == 2) ||
+        (inputscore1.value == inputscore2.value &&
+         ((advPoint2_R1_value == 1 && currentRound == 1) ||
+          (advPoint2_R2_value == 1 && currentRound == 2) ||
+          (advPoint2_R3_value == 1 && currentRound == 3) ||
+          (subTotalFoul1 > subTotalFoul2 && disarm1 > disarm2 && subTotalFoul2 != 3) ||
+          (subTotalFoul1 < subTotalFoul2 && disarm1 > disarm2 && subTotalFoul2 != 3) ||
+          (disarm1 == disarm2 && subTotalFoul1 > subTotalFoul2) ||
+          (disarm1 > disarm2 && valueFoulA == 1 && valueFoulD != 1) ||
+          (disarm1 > disarm2 && valueFoulB == 1 && valueFoulE != 1)))) {
         winBlue += 1;
         console.log("winBlue += 1;");
     }
@@ -673,29 +668,25 @@ function nextRound() {
         //if lose or win PRINT
         console.log(`${`winRed:`} ${winRed}`);
         console.log(`${`winBlue:`} ${winBlue}`);
+
         if ((winRed > 0 && winRed > winBlue) ||
-            (inputscore1.value > inputscore2.value && subTotalFoul1 != 3 && disarm1 != 2
-            && (subTotalFoul2 == 3 || disarm2 == 2 || subTotalFoul2 == subTotalFoul1 || disarm1 == disarm2)) ||
-            (inputscore1.value > inputscore2.value && subTotalFoul1 != 3 && disarm1 != 2 && subTotalFoul2 == 3 && disarm2 == 2) ||
-
-            (inputscore1.value == inputscore2.value &&
-            (suddenDeathScoreA > suddenDeathScoreB || subTotalFoul1 < subTotalFoul2
-            || disarm1 < disarm2 || (redCoins == heads && redCoins != 0) || (redCoins == tails && redCoins != 0))
-            ) || (
-            inputscore1.value < inputscore2.value &&
-            (subTotalFoul2 == 3 || disarm2 == 2)
-            ) || (
-            inputscore1.value > inputscore2.value &&
-            (((subTotalFoul1 == subTotalFoul2 || subTotalFoul1 > subTotalFoul2) && subTotalFoul1 != 3 && disarm1 != 2)
-            || (disarm1 > disarm2 && disarm1 != 2 && subTotalFoul1 != 3)
-            || (subTotalFoul1 < subTotalFoul2 && subTotalFoul1 != 3 && disarm1 != 2)
-            || (disarm1 < disarm2 && disarm1 != 2 && subTotalFoul1 != 3)
-            || (subTotalFoul1 > subTotalFoul2 && subTotalFoul1 != 3 && disarm1 != 2)
-            )
-            )
-
-        || (inputscore1.value == inputscore2.value && ((advPoint1_R1_value == 1 && currentRound == 1)
-        || (valueFoulD == 1 && valueFoulA != 1) || (valueFoulE == 1 && valueFoulB != 1)))) {
+        subTotalFoul2 == 3 || disarm2 == 2 ||
+        (inputscore1.value > inputscore2.value && subTotalFoul1 != 3 && disarm1 != 2 &&
+         (subTotalFoul1 != 3 && disarm1 != 2 && (subTotalFoul1 != 3 && disarm1 != 2 || subTotalFoul1 == subTotalFoul2 || disarm1 == disarm2))) ||
+        (inputscore1.value == inputscore2.value &&
+         ((suddenDeathScoreA > suddenDeathScoreB && subTotalFoul1 == subTotalFoul2 && disarm1 == disarm2) ||
+          (subTotalFoul1 < subTotalFoul2 && disarm1 < disarm2) ||
+          disarm1 < disarm2 ||
+          (redCoins == heads && redCoins != 0) || (redCoins == tails && redCoins != 0))) ||
+        (inputscore1.value < inputscore2.value && subTotalFoul2 == 3) ||
+        (inputscore1.value < inputscore2.value && disarm2 == 2) ||
+        (inputscore1.value == inputscore2.value &&
+         ((advPoint1_R1_value == 1 && currentRound == 1) ||
+         (subTotalFoul1 > subTotalFoul2 && disarm1 < disarm2 && subTotalFoul1 != 3) ||
+         (subTotalFoul1 < subTotalFoul2 && disarm1 < disarm2 && subTotalFoul1 != 3) ||
+         (disarm1 == disarm2 && subTotalFoul1 < subTotalFoul2) ||
+         (disarm1 < disarm2 && valueFoulD == 1 && valueFoulA != 1) ||
+          (disarm1 < disarm2 && valueFoulE == 1 && valueFoulB != 1)))) {
 
             if (suddenDeathScoreA > suddenDeathScoreB || (redCoins == heads && redCoins != 0) || (redCoins == tails && redCoins != 0)) {
                 if (suddenDeathScoreA > suddenDeathScoreB) {
@@ -720,7 +711,9 @@ function nextRound() {
                     winner2_R1.innerHTML = "(foul)";
                     console.log("winner2_R1.innerHTML foulR1");
                 }
-                if (inputscore1.value == inputscore2.value && subTotalFoul1 < subTotalFoul2 && disarm2 != 2) {
+                if (inputscore1.value == inputscore2.value && (subTotalFoul1 < subTotalFoul2 && disarm2 != 2 && disarm1 < disarm2)
+                || (disarm1 == disarm2 && subTotalFoul1 < subTotalFoul2
+                && subTotalFoul1 != 3 && disarm1 != 2)) {
                     winner2_R1.innerHTML = "(foul)";
                     console.log("winner2_R1.innerHTML foulR1");
                 }
@@ -744,7 +737,7 @@ function nextRound() {
                 ) {
                 winner2_R1.innerHTML = "(score)";
                 console.log("scorePrintR1");
-            }            
+            }
             if (inputscore1.value == inputscore2.value
                 && (subTotalFoul2 == 0 && disarm2 == 0)
                 && (subTotalFoul1 == 0 && disarm1 == 0)
@@ -754,7 +747,8 @@ function nextRound() {
                 ) {
                 winner2_R1.innerHTML = "(advPoint)";
                 console.log("advPointR1");
-            }            
+            }
+
             winner1_R1.innerHTML = currentWinnerR1;
             score1_R1.innerHTML = currentScoreR1;
             score2_R1.innerHTML = currentloserScoreR1;
@@ -768,29 +762,25 @@ function nextRound() {
             console.log(`${`subFinalScore2:`} ${subFinalScore2}`);
             console.log(`${`advPoint1:`} ${advPoint1}`);
             console.log(`${`advPoint2:`} ${advPoint2}`);
+
         } else if ((winBlue > 0 && winBlue > winRed) ||
-            (inputscore1.value < inputscore2.value && subTotalFoul2 != 3 && disarm2 != 2
-            && (subTotalFoul1 == 3 || disarm1 == 2 || subTotalFoul2 == subTotalFoul1 || disarm1 == disarm2)) ||
-            (inputscore1.value < inputscore2.value && subTotalFoul2 != 3 && disarm2 != 2 && (subTotalFoul1 == 3 || disarm1 == 2)) ||
-
-            (inputscore1.value == inputscore2.value &&
-            (suddenDeathScoreA < suddenDeathScoreB || subTotalFoul1 > subTotalFoul2
-            || disarm1 > disarm2 || (blueCoins == heads && blueCoins != 0) || (blueCoins == tails && blueCoins != 0))
-            ) || (
-            inputscore1.value > inputscore2.value &&
-            (subTotalFoul1 == 3 || disarm1 == 2)
-            ) || (
-            inputscore1.value < inputscore2.value &&
-            (((subTotalFoul1 == subTotalFoul2 || subTotalFoul1 < subTotalFoul2) && subTotalFoul2 != 3 && disarm2 != 2)
-            || (disarm1 < disarm2 && disarm2 != 2 && subTotalFoul2 != 3)
-            || (subTotalFoul1 > subTotalFoul2 && subTotalFoul2 != 3 && disarm2 != 2)
-            || (disarm1 > disarm2 && disarm2 != 2 && subTotalFoul2 != 3)
-            || (subTotalFoul1 < subTotalFoul2 && subTotalFoul2 != 3 && disarm2 != 2)
-            )
-            )
-
-        || (inputscore1.value == inputscore2.value && ((advPoint2_R1_value == 1 && currentRound == 1)
-        || (valueFoulA == 1 && valueFoulD != 1) || (valueFoulB == 1 && valueFoulE != 1)))) {
+        subTotalFoul1 == 3 || disarm1 == 2 ||
+        (inputscore1.value < inputscore2.value && subTotalFoul2 != 3 && disarm2 != 2 &&
+         (subTotalFoul2 != 3 && disarm2 != 2 && (subTotalFoul2 != 3 && disarm2 != 2 || subTotalFoul1 == subTotalFoul2 || disarm1 == disarm2))) ||
+        (inputscore1.value == inputscore2.value &&
+         ((suddenDeathScoreA < suddenDeathScoreB && subTotalFoul1 == subTotalFoul2 && disarm1 == disarm2) ||
+          (subTotalFoul1 > subTotalFoul2 && disarm1 > disarm2) ||
+          disarm1 > disarm2 ||
+          (blueCoins == heads && blueCoins != 0) || (blueCoins == tails && blueCoins != 0))) ||
+        (inputscore1.value > inputscore2.value && subTotalFoul1 == 3) ||
+        (inputscore1.value > inputscore2.value && disarm1 == 2) ||
+        (inputscore1.value == inputscore2.value &&
+         ((advPoint2_R1_value == 1 && currentRound == 1) ||
+         (subTotalFoul1 > subTotalFoul2 && disarm1 > disarm2 && subTotalFoul2 != 3) ||
+         (subTotalFoul1 < subTotalFoul2 && disarm1 > disarm2 && subTotalFoul2 != 3) ||
+         (disarm1 == disarm2 && subTotalFoul1 > subTotalFoul2) ||
+         (disarm1 > disarm2 && valueFoulA == 1 && valueFoulD != 1) ||
+          (disarm1 > disarm2 && valueFoulB == 1 && valueFoulE != 1)))) {
 
             if (suddenDeathScoreA < suddenDeathScoreB || (blueCoins == heads && blueCoins != 0) || (blueCoins == tails && blueCoins != 0)) {
                 if (suddenDeathScoreA < suddenDeathScoreB) {
@@ -815,7 +805,9 @@ function nextRound() {
                     winner1_R1.innerHTML = "(foul)";
                     console.log("winner1_R1.innerHTML foulR1");
                 }
-                if (inputscore1.value == inputscore2.value && subTotalFoul1 > subTotalFoul2 && disarm1 != 2) {
+                if (inputscore1.value == inputscore2.value && (subTotalFoul1 > subTotalFoul2 && disarm1 != 2 && disarm1 < disarm2)
+                || (disarm1 == disarm2 && subTotalFoul1 > subTotalFoul2
+                && subTotalFoul1 != 3 && disarm1 != 2)) {
                     winner1_R1.innerHTML = "(foul)";
                     console.log("winner1_R1.innerHTML foulR1");
                 }
@@ -839,7 +831,7 @@ function nextRound() {
                 ) {
                 winner1_R1.innerHTML = "(score)";
                 console.log("scorePrintR1");
-            }            
+            }
             if (inputscore1.value == inputscore2.value
                 && (subTotalFoul2 == 0 && disarm2 == 0)
                 && (subTotalFoul1 == 0 && disarm1 == 0)
@@ -849,7 +841,8 @@ function nextRound() {
                 ) {
                 winner1_R1.innerHTML = "(advPoint)";
                 console.log("advPointR1");
-            }            
+            }
+
             winner2_R1.innerHTML = currentWinnerR1;
             score1_R1.innerHTML = currentloserScoreR1;
             score2_R1.innerHTML = currentScoreR1;
@@ -873,28 +866,23 @@ function nextRound() {
         currentLoserR2 = loserName;
         currentloserScoreR2 = loserScore;
         if ((winRed > 0 && winRed > winBlue) ||
-            (inputscore1.value > inputscore2.value && subTotalFoul1 != 3 && disarm1 != 2
-            && (subTotalFoul2 == 3 || disarm2 == 2 || subTotalFoul2 == subTotalFoul1 || disarm1 == disarm2)) ||
-            (inputscore1.value > inputscore2.value && subTotalFoul1 != 3 && disarm1 != 2 && subTotalFoul2 == 3 && disarm2 == 2) ||
-
-            (inputscore1.value == inputscore2.value &&
-            (suddenDeathScoreA > suddenDeathScoreB || subTotalFoul1 < subTotalFoul2
-            || disarm1 < disarm2 || (redCoins == heads && redCoins != 0) || (redCoins == tails && redCoins != 0))
-            ) || (
-            inputscore1.value < inputscore2.value &&
-            (subTotalFoul2 == 3 || disarm2 == 2)
-            ) || (
-            inputscore1.value > inputscore2.value &&
-            (((subTotalFoul1 == subTotalFoul2 || subTotalFoul1 > subTotalFoul2) && subTotalFoul1 != 3 && disarm1 != 2)
-            || (disarm1 > disarm2 && disarm1 != 2 && subTotalFoul1 != 3)
-            || (subTotalFoul1 < subTotalFoul2 && subTotalFoul1 != 3 && disarm1 != 2)
-            || (disarm1 < disarm2 && disarm1 != 2 && subTotalFoul1 != 3)
-            || (subTotalFoul1 > subTotalFoul2 && subTotalFoul1 != 3 && disarm1 != 2)
-            )
-            )
-
-        || (inputscore1.value == inputscore2.value && ((advPoint1_R2_value == 1 && currentRound == 2)
-        || (valueFoulD == 1 && valueFoulA != 1) || (valueFoulE == 1 && valueFoulB != 1)))) {
+        subTotalFoul2 == 3 || disarm2 == 2 ||
+        (inputscore1.value > inputscore2.value && subTotalFoul1 != 3 && disarm1 != 2 &&
+         (subTotalFoul1 != 3 && disarm1 != 2 && (subTotalFoul1 != 3 && disarm1 != 2 || subTotalFoul1 == subTotalFoul2 || disarm1 == disarm2))) ||
+        (inputscore1.value == inputscore2.value &&
+         ((suddenDeathScoreA > suddenDeathScoreB && subTotalFoul1 == subTotalFoul2 && disarm1 == disarm2) ||
+          (subTotalFoul1 < subTotalFoul2 && disarm1 < disarm2) ||
+          disarm1 < disarm2 ||
+          (redCoins == heads && redCoins != 0) || (redCoins == tails && redCoins != 0))) ||
+        (inputscore1.value < inputscore2.value && subTotalFoul2 == 3) ||
+        (inputscore1.value < inputscore2.value && disarm2 == 2) ||
+        (inputscore1.value == inputscore2.value &&
+         ((advPoint1_R2_value == 1 && currentRound == 2) ||
+         (subTotalFoul1 > subTotalFoul2 && disarm1 < disarm2 && subTotalFoul1 != 3) ||
+         (subTotalFoul1 < subTotalFoul2 && disarm1 < disarm2 && subTotalFoul1 != 3) ||
+         (disarm1 == disarm2 && subTotalFoul1 < subTotalFoul2) ||
+         (disarm1 < disarm2 && valueFoulD == 1 && valueFoulA != 1) ||
+          (disarm1 < disarm2 && valueFoulE == 1 && valueFoulB != 1)))) {
 
             if (suddenDeathScoreA > suddenDeathScoreB || (redCoins == heads && redCoins != 0) || (redCoins == tails && redCoins != 0)) {
                 if (suddenDeathScoreA > suddenDeathScoreB) {
@@ -943,7 +931,7 @@ function nextRound() {
                 ) {
                 winner2_R2.innerHTML = "(score)";
                 console.log("scorePrintR2");
-            }            
+            }
             if (inputscore1.value == inputscore2.value
                 && (subTotalFoul2 == 0 && disarm2 == 0)
                 && (subTotalFoul1 == 0 && disarm1 == 0)
@@ -953,11 +941,14 @@ function nextRound() {
                 ) {
                 winner2_R2.innerHTML = "(advPoint)";
                 console.log("advPointR2");
-            }           
+            }
+
             winner1_R2.innerHTML = currentWinnerR2;
             score1_R2.innerHTML = currentScoreR2;
             score2_R2.innerHTML = currentloserScoreR2;
-            printSummary();            
+            printSummary();
+            // foul1_R2.innerHTML = subTotalFoul1;
+            // foul2_R2.innerHTML = subTotalFoul2;
             winRed2 += winRed;
             subFinalScore1 += parseInt(currentScoreR2);
             subFinalScore2 += parseInt(currentloserScoreR2);
@@ -969,28 +960,23 @@ function nextRound() {
             console.log(`${`advPoint2:`} ${advPoint2}`);
             overallWin();
         } else if ((winBlue > 0 && winBlue > winRed) ||
-            (inputscore1.value < inputscore2.value && subTotalFoul2 != 3 && disarm2 != 2
-            && (subTotalFoul1 == 3 || disarm1 == 2 || subTotalFoul2 == subTotalFoul1 || disarm1 == disarm2)) ||
-            (inputscore1.value < inputscore2.value && subTotalFoul2 != 3 && disarm2 != 2 && (subTotalFoul1 == 3 || disarm1 == 2)) ||
-
-            (inputscore1.value == inputscore2.value &&
-            (suddenDeathScoreA < suddenDeathScoreB || subTotalFoul1 > subTotalFoul2
-            || disarm1 > disarm2 || (blueCoins == heads && blueCoins != 0) || (blueCoins == tails && blueCoins != 0))
-            ) || (
-            inputscore1.value > inputscore2.value &&
-            (subTotalFoul1 == 3 || disarm1 == 2)
-            ) || (
-            inputscore1.value < inputscore2.value &&
-            (((subTotalFoul1 == subTotalFoul2 || subTotalFoul1 < subTotalFoul2) && subTotalFoul2 != 3 && disarm2 != 2)
-            || (disarm1 < disarm2 && disarm2 != 2 && subTotalFoul2 != 3)
-            || (subTotalFoul1 > subTotalFoul2 && subTotalFoul2 != 3 && disarm2 != 2)
-            || (disarm1 > disarm2 && disarm2 != 2 && subTotalFoul2 != 3)
-            || (subTotalFoul1 < subTotalFoul2 && subTotalFoul2 != 3 && disarm2 != 2)
-            )
-            )
-
-        || (inputscore1.value == inputscore2.value && ((advPoint2_R2_value == 1 && currentRound == 2)
-        || (valueFoulA == 1 && valueFoulD != 1) || (valueFoulB == 1 && valueFoulE != 1)))) {
+        subTotalFoul1 == 3 || disarm1 == 2 ||
+        (inputscore1.value < inputscore2.value && subTotalFoul2 != 3 && disarm2 != 2 &&
+         (subTotalFoul2 != 3 && disarm2 != 2 && (subTotalFoul2 != 3 && disarm2 != 2 || subTotalFoul1 == subTotalFoul2 || disarm1 == disarm2))) ||
+        (inputscore1.value == inputscore2.value &&
+         ((suddenDeathScoreA < suddenDeathScoreB && subTotalFoul1 == subTotalFoul2 && disarm1 == disarm2) ||
+          (subTotalFoul1 > subTotalFoul2 && disarm1 > disarm2) ||
+          disarm1 > disarm2 ||
+          (blueCoins == heads && blueCoins != 0) || (blueCoins == tails && blueCoins != 0))) ||
+        (inputscore1.value > inputscore2.value && subTotalFoul1 == 3) ||
+        (inputscore1.value > inputscore2.value && disarm1 == 2) ||
+        (inputscore1.value == inputscore2.value &&
+         ((advPoint2_R2_value == 1 && currentRound == 2) ||
+         (subTotalFoul1 > subTotalFoul2 && disarm1 > disarm2 && subTotalFoul2 != 3) ||
+         (subTotalFoul1 < subTotalFoul2 && disarm1 > disarm2 && subTotalFoul2 != 3) ||
+         (disarm1 == disarm2 && subTotalFoul1 > subTotalFoul2) ||
+         (disarm1 > disarm2 && valueFoulA == 1 && valueFoulD != 1) ||
+          (disarm1 > disarm2 && valueFoulB == 1 && valueFoulE != 1)))) {
 
             if (suddenDeathScoreA < suddenDeathScoreB || (blueCoins == heads && blueCoins != 0) || (blueCoins == tails && blueCoins != 0)) {
                 if (suddenDeathScoreA < suddenDeathScoreB) {
@@ -1039,7 +1025,7 @@ function nextRound() {
                 ) {
                 winner1_R2.innerHTML = "(score)";
                 console.log("scorePrintR2");
-            }            
+            }
             if (inputscore1.value == inputscore2.value
                 && (subTotalFoul2 == 0 && disarm2 == 0)
                 && (subTotalFoul1 == 0 && disarm1 == 0)
@@ -1049,11 +1035,14 @@ function nextRound() {
                 ) {
                 winner1_R2.innerHTML = "(advPoint)";
                 console.log("advPointR2");
-            }            
+            }
+
             winner2_R2.innerHTML = currentWinnerR2;
             score1_R2.innerHTML = currentloserScoreR2;
             score2_R2.innerHTML = currentScoreR2;
-            printSummary();            
+            printSummary();
+            // foul1_R2.innerHTML = subTotalFoul1;
+            // foul2_R2.innerHTML = subTotalFoul2;
             winBlue2 += winBlue;
             subFinalScore1 += parseInt(currentloserScoreR2);
             subFinalScore2 += parseInt(currentScoreR2);
@@ -1074,28 +1063,23 @@ function nextRound() {
         currentLoserR3 = loserName;
         currentloserScoreR3 = loserScore;
         if ((winRed > 0 && winRed > winBlue) ||
-            (inputscore1.value > inputscore2.value && subTotalFoul1 != 3 && disarm1 != 2
-            && (subTotalFoul2 == 3 || disarm2 == 2 || subTotalFoul2 == subTotalFoul1 || disarm1 == disarm2)) ||
-            (inputscore1.value > inputscore2.value && subTotalFoul1 != 3 && disarm1 != 2 && subTotalFoul2 == 3 && disarm2 == 2) ||
-
-            (inputscore1.value == inputscore2.value &&
-            (suddenDeathScoreA > suddenDeathScoreB || subTotalFoul1 < subTotalFoul2
-            || disarm1 < disarm2 || (redCoins == heads && redCoins != 0) || (redCoins == tails && redCoins != 0))
-            ) || (
-            inputscore1.value < inputscore2.value &&
-            (subTotalFoul2 == 3 || disarm2 == 2)
-            ) || (
-            inputscore1.value > inputscore2.value &&
-            (((subTotalFoul1 == subTotalFoul2 || subTotalFoul1 > subTotalFoul2) && subTotalFoul1 != 3 && disarm1 != 2)
-            || (disarm1 > disarm2 && disarm1 != 2 && subTotalFoul1 != 3)
-            || (subTotalFoul1 < subTotalFoul2 && subTotalFoul1 != 3 && disarm1 != 2)
-            || (disarm1 < disarm2 && disarm1 != 2 && subTotalFoul1 != 3)
-            || (subTotalFoul1 > subTotalFoul2 && subTotalFoul1 != 3 && disarm1 != 2)
-            )
-            )
-
-        || (inputscore1.value == inputscore2.value && ((advPoint1_R3_value == 1 && currentRound == 3)
-        || (valueFoulD == 1 && valueFoulA != 1) || (valueFoulE == 1 && valueFoulB != 1)))) {
+        subTotalFoul2 == 3 || disarm2 == 2 ||
+        (inputscore1.value > inputscore2.value && subTotalFoul1 != 3 && disarm1 != 2 &&
+         (subTotalFoul1 != 3 && disarm1 != 2 && (subTotalFoul1 != 3 && disarm1 != 2 || subTotalFoul1 == subTotalFoul2 || disarm1 == disarm2))) ||
+        (inputscore1.value == inputscore2.value &&
+         ((suddenDeathScoreA > suddenDeathScoreB && subTotalFoul1 == subTotalFoul2 && disarm1 == disarm2) ||
+          (subTotalFoul1 < subTotalFoul2 && disarm1 < disarm2) ||
+          disarm1 < disarm2 ||
+          (redCoins == heads && redCoins != 0) || (redCoins == tails && redCoins != 0))) ||
+        (inputscore1.value < inputscore2.value && subTotalFoul2 == 3) ||
+        (inputscore1.value < inputscore2.value && disarm2 == 2) ||
+        (inputscore1.value == inputscore2.value &&
+         ((advPoint1_R3_value == 1 && currentRound == 3) ||
+         (subTotalFoul1 > subTotalFoul2 && disarm1 < disarm2 && subTotalFoul1 != 3) ||
+         (subTotalFoul1 < subTotalFoul2 && disarm1 < disarm2 && subTotalFoul1 != 3) ||
+         (disarm1 == disarm2 && subTotalFoul1 < subTotalFoul2) ||
+         (disarm1 < disarm2 && valueFoulD == 1 && valueFoulA != 1) ||
+          (disarm1 < disarm2 && valueFoulE == 1 && valueFoulB != 1)))) {
 
             if (suddenDeathScoreA > suddenDeathScoreB || (redCoins == heads && redCoins != 0) || (redCoins == tails && redCoins != 0)) {
                 if (suddenDeathScoreA > suddenDeathScoreB) {
@@ -1144,7 +1128,7 @@ function nextRound() {
                 ) {
                 winner2_R3.innerHTML = "(score)";
                 console.log("scorePrintR3");
-            }            
+            }
             if (inputscore1.value == inputscore2.value
                 && (subTotalFoul2 == 0 && disarm2 == 0)
                 && (subTotalFoul1 == 0 && disarm1 == 0)
@@ -1154,11 +1138,14 @@ function nextRound() {
                 ) {
                 winner2_R3.innerHTML = "(advPoint)";
                 console.log("advPointR3");
-            }            
+            }
+
             winner1_R3.innerHTML = currentWinnerR3;
             score1_R3.innerHTML = currentScoreR3;
             score2_R3.innerHTML = currentloserScoreR3;
-            printSummary();            
+            printSummary();
+            // foul1_R3.innerHTML = subTotalFoul1;
+            // foul2_R3.innerHTML = subTotalFoul2;
             winRed3 += winRed;
             subFinalScore1 += parseInt(currentScoreR3);
             subFinalScore2 += parseInt(currentloserScoreR3);
@@ -1170,28 +1157,23 @@ function nextRound() {
             console.log(`${`advPoint2:`} ${advPoint2}`);
             overallWin();
         } else if ((winBlue > 0 && winBlue > winRed) ||
-            (inputscore1.value < inputscore2.value && subTotalFoul2 != 3 && disarm2 != 2
-            && (subTotalFoul1 == 3 || disarm1 == 2 || subTotalFoul2 == subTotalFoul1 || disarm1 == disarm2)) ||
-            (inputscore1.value < inputscore2.value && subTotalFoul2 != 3 && disarm2 != 2 && (subTotalFoul1 == 3 || disarm1 == 2)) ||
-
-            (inputscore1.value == inputscore2.value &&
-            (suddenDeathScoreA < suddenDeathScoreB || subTotalFoul1 > subTotalFoul2
-            || disarm1 > disarm2 || (blueCoins == heads && blueCoins != 0) || (blueCoins == tails && blueCoins != 0))
-            ) || (
-            inputscore1.value > inputscore2.value &&
-            (subTotalFoul1 == 3 || disarm1 == 2)
-            ) || (
-            inputscore1.value < inputscore2.value &&
-            (((subTotalFoul1 == subTotalFoul2 || subTotalFoul1 < subTotalFoul2) && subTotalFoul2 != 3 && disarm2 != 2)
-            || (disarm1 < disarm2 && disarm2 != 2 && subTotalFoul2 != 3)
-            || (subTotalFoul1 > subTotalFoul2 && subTotalFoul2 != 3 && disarm2 != 2)
-            || (disarm1 > disarm2 && disarm2 != 2 && subTotalFoul2 != 3)
-            || (subTotalFoul1 < subTotalFoul2 && subTotalFoul2 != 3 && disarm2 != 2)
-            )
-            )
-
-        || (inputscore1.value == inputscore2.value && ((advPoint2_R3_value == 1 && currentRound == 3)
-        || (valueFoulA == 1 && valueFoulD != 1) || (valueFoulB == 1 && valueFoulE != 1)))) {
+        subTotalFoul1 == 3 || disarm1 == 2 ||
+        (inputscore1.value < inputscore2.value && subTotalFoul2 != 3 && disarm2 != 2 &&
+         (subTotalFoul2 != 3 && disarm2 != 2 && (subTotalFoul2 != 3 && disarm2 != 2 || subTotalFoul1 == subTotalFoul2 || disarm1 == disarm2))) ||
+        (inputscore1.value == inputscore2.value &&
+         ((suddenDeathScoreA < suddenDeathScoreB && subTotalFoul1 == subTotalFoul2 && disarm1 == disarm2) ||
+          (subTotalFoul1 > subTotalFoul2 && disarm1 > disarm2) ||
+          disarm1 > disarm2 ||
+          (blueCoins == heads && blueCoins != 0) || (blueCoins == tails && blueCoins != 0))) ||
+        (inputscore1.value > inputscore2.value && subTotalFoul1 == 3) ||
+        (inputscore1.value > inputscore2.value && disarm1 == 2) ||
+        (inputscore1.value == inputscore2.value &&
+         ((advPoint2_R3_value == 1 && currentRound == 3) ||
+         (subTotalFoul1 > subTotalFoul2 && disarm1 > disarm2 && subTotalFoul2 != 3) ||
+         (subTotalFoul1 < subTotalFoul2 && disarm1 > disarm2 && subTotalFoul2 != 3) ||
+         (disarm1 == disarm2 && subTotalFoul1 > subTotalFoul2) ||
+         (disarm1 > disarm2 && valueFoulA == 1 && valueFoulD != 1) ||
+          (disarm1 > disarm2 && valueFoulB == 1 && valueFoulE != 1)))) {
 
             if (suddenDeathScoreA < suddenDeathScoreB || (blueCoins == heads && blueCoins != 0) || (blueCoins == tails && blueCoins != 0)) {
                 if (suddenDeathScoreA < suddenDeathScoreB) {
@@ -1240,7 +1222,7 @@ function nextRound() {
                 ) {
                 winner1_R3.innerHTML = "(score)";
                 console.log("scorePrintR3");
-            }            
+            }
             if (inputscore1.value == inputscore2.value
                 && (subTotalFoul2 == 0 && disarm2 == 0)
                 && (subTotalFoul1 == 0 && disarm1 == 0)
@@ -1250,11 +1232,14 @@ function nextRound() {
                 ) {
                 winner1_R3.innerHTML = "(advPoint)";
                 console.log("advPointR3");
-            }            
+            }
+            
             winner2_R3.innerHTML = currentWinnerR3;
             score1_R3.innerHTML = currentloserScoreR3;
             score2_R3.innerHTML = currentScoreR3;
-            printSummary();            
+            printSummary();
+            // foul1_R3.innerHTML = subTotalFoul1;
+            // foul2_R3.innerHTML = subTotalFoul2;
             winBlue3 += winBlue;
             subFinalScore1 += parseInt(currentloserScoreR3);
             subFinalScore2 += parseInt(currentScoreR3);
@@ -2299,30 +2284,25 @@ function determineWinner() {
         console.log(`${`advPoint1_R3_value`} ${advPoint1_R3_value}`);
         console.log(`${`advPoint2_R3_value`} ${advPoint2_R3_value}`);
     }
-    if ((inputscore1.value > inputscore2.value && subTotalFoul1 != 3 && disarm1 != 2
-        && (subTotalFoul2 == 3 || disarm2 == 2 || subTotalFoul2 == subTotalFoul1 || disarm1 == disarm2)) ||
-        (inputscore1.value > inputscore2.value && subTotalFoul1 != 3 && disarm1 != 2 && (subTotalFoul2 == 3 || disarm2 == 2)) ||
-
+    if (subTotalFoul2 == 3 || disarm2 == 2 ||
+        (inputscore1.value > inputscore2.value && subTotalFoul1 != 3 && disarm1 != 2 &&
+         (subTotalFoul1 != 3 && disarm1 != 2 && (subTotalFoul1 != 3 && disarm1 != 2 || subTotalFoul1 == subTotalFoul2 || disarm1 == disarm2))) ||
         (inputscore1.value == inputscore2.value &&
-        (suddenDeathScoreA > suddenDeathScoreB || subTotalFoul1 < subTotalFoul2
-        || disarm1 < disarm2 || (redCoins == heads && redCoins != 0) || (redCoins == tails && redCoins != 0))
-        ) || (
-        inputscore1.value < inputscore2.value &&
-        (subTotalFoul2 == 3 || disarm2 == 2)
-        ) || (
-        inputscore1.value > inputscore2.value &&
-        (((subTotalFoul1 == subTotalFoul2 || subTotalFoul1 > subTotalFoul2) && subTotalFoul1 != 3 && disarm1 != 2)
-        || (disarm1 > disarm2 && disarm1 != 2 && subTotalFoul1 != 3)
-        || (subTotalFoul1 < subTotalFoul2 && subTotalFoul1 != 3 && disarm1 != 2)
-        || (disarm1 < disarm2 && disarm1 != 2 && subTotalFoul1 != 3)
-        || (subTotalFoul1 > subTotalFoul2 && subTotalFoul1 != 3 && disarm1 != 2)
-        )
-        )
-
-    || (inputscore1.value == inputscore2.value && ((advPoint1_R1_value == 1 && currentRound == 1)
-    || (advPoint1_R2_value == 1 && currentRound == 2)
-    || (advPoint1_R3_value == 1 && currentRound == 3)
-    || (valueFoulD == 1 && valueFoulA != 1) || (valueFoulE == 1 && valueFoulB != 1)))) {
+         ((suddenDeathScoreA > suddenDeathScoreB && subTotalFoul1 == subTotalFoul2 && disarm1 == disarm2) ||
+          (subTotalFoul1 < subTotalFoul2 && disarm1 < disarm2) ||
+          disarm1 < disarm2 ||
+          (redCoins == heads && redCoins != 0) || (redCoins == tails && redCoins != 0))) ||
+        (inputscore1.value < inputscore2.value && subTotalFoul2 == 3) ||
+        (inputscore1.value < inputscore2.value && disarm2 == 2) ||
+        (inputscore1.value == inputscore2.value &&
+         ((advPoint1_R1_value == 1 && currentRound == 1) ||
+          (advPoint1_R2_value == 1 && currentRound == 2) ||
+          (advPoint1_R3_value == 1 && currentRound == 3) ||
+          (subTotalFoul1 > subTotalFoul2 && disarm1 < disarm2 && subTotalFoul1 != 3) ||
+          (subTotalFoul1 < subTotalFoul2 && disarm1 < disarm2 && subTotalFoul1 != 3) ||
+          (disarm1 == disarm2 && subTotalFoul1 < subTotalFoul2) ||
+          (disarm1 < disarm2 && valueFoulD == 1 && valueFoulA != 1) ||
+          (disarm1 < disarm2 && valueFoulE == 1 && valueFoulB != 1)))) {
 
         winnerScore = inputscore1.value;
         loserScore = inputscore2.value;
@@ -2330,32 +2310,28 @@ function determineWinner() {
         loserName = nameBlueValue;
         console.log(`RED WINS`);
         alert(`RED WINS`);
-        nextbtn.disabled = false;        
-    } else if (
-        (inputscore1.value < inputscore2.value && subTotalFoul2 != 3 && disarm2 != 2
-        && (subTotalFoul1 == 3 || disarm1 == 2 || subTotalFoul2 == subTotalFoul1 || disarm2 == disarm1)) ||
-        (inputscore1.value < inputscore2.value && subTotalFoul2 != 3 && disarm2 != 2 && (subTotalFoul1 == 3 || disarm1 == 2)) ||
-
+        nextbtn.disabled = false;
+        
+    } else if (subTotalFoul1 == 3 || disarm1 == 2 ||
+        (inputscore1.value < inputscore2.value && subTotalFoul2 != 3 && disarm2 != 2 &&
+         (subTotalFoul2 != 3 && disarm2 != 2 && (subTotalFoul2 != 3 && disarm2 != 2 || subTotalFoul1 == subTotalFoul2 || disarm1 == disarm2))) ||
         (inputscore1.value == inputscore2.value &&
-        (suddenDeathScoreA < suddenDeathScoreB || subTotalFoul1 > subTotalFoul2
-        || disarm1 > disarm2 || (blueCoins == heads && blueCoins != 0) || (blueCoins == tails && blueCoins != 0))
-        ) || (
-        inputscore1.value > inputscore2.value &&
-        (subTotalFoul1 == 3 || disarm1 == 2)
-        ) || (
-        inputscore1.value < inputscore2.value &&
-        (((subTotalFoul1 == subTotalFoul2 || subTotalFoul1 < subTotalFoul2) && subTotalFoul2 != 3 && disarm2 != 2)
-        || (disarm1 < disarm2 && disarm2 != 2 && subTotalFoul2 != 3)
-        || (subTotalFoul1 > subTotalFoul2 && subTotalFoul2 != 3 && disarm2 != 2)
-        || (disarm1 > disarm2 && disarm2 != 2 && subTotalFoul2 != 3)
-        || (subTotalFoul1 < subTotalFoul2 && subTotalFoul2 != 3 && disarm2 != 2)
-        )
-        )
-
-    || (inputscore1.value == inputscore2.value && ((advPoint2_R1_value == 1 && currentRound == 1)
-    || (advPoint2_R2_value == 1 && currentRound == 2)
-    || (advPoint2_R3_value == 1 && currentRound == 3)
-    || (valueFoulA == 1 && valueFoulD != 1) || (valueFoulB == 1 && valueFoulE != 1)))) {
+         ((suddenDeathScoreA < suddenDeathScoreB && subTotalFoul1 == subTotalFoul2 && disarm1 == disarm2) ||
+          (subTotalFoul1 > subTotalFoul2 && disarm1 > disarm2) ||
+          disarm1 > disarm2 ||
+          (blueCoins == heads && blueCoins != 0) || (blueCoins == tails && blueCoins != 0))) ||
+        (inputscore1.value > inputscore2.value && subTotalFoul1 == 3) ||
+        (inputscore1.value > inputscore2.value && disarm1 == 2) ||
+        (inputscore1.value == inputscore2.value &&
+         ((advPoint2_R1_value == 1 && currentRound == 1) ||
+          (advPoint2_R2_value == 1 && currentRound == 2) ||
+          (advPoint2_R3_value == 1 && currentRound == 3) ||
+          (subTotalFoul1 > subTotalFoul2 && disarm1 > disarm2 && subTotalFoul2 != 3) ||
+          (subTotalFoul1 < subTotalFoul2 && disarm1 > disarm2 && subTotalFoul2 != 3) ||
+          (disarm1 == disarm2 && subTotalFoul1 > subTotalFoul2) ||
+          (disarm1 > disarm2 && valueFoulA == 1 && valueFoulD != 1) ||
+          (disarm1 > disarm2 && valueFoulB == 1 && valueFoulE != 1)))) {
+        
         winnerScore = inputscore2.value;
         loserScore = inputscore1.value;
         winnerName = nameBlueValue;
@@ -2363,6 +2339,7 @@ function determineWinner() {
         console.log(`BLUE WINS`);
         alert(`BLUE WINS`);
         nextbtn.disabled = false;
+        
     } else {
         console.log(`${`elseTie`}`);
         if (currentRound == 1) {
