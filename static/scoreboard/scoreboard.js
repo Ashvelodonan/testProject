@@ -728,7 +728,7 @@ function nextRound() {
             }
             if (inputscore1.value > inputscore2.value
                 && ((subTotalFoul2 < subTotalFoul1 || subTotalFoul2 > subTotalFoul1 || subTotalFoul2 == subTotalFoul1) && subTotalFoul1 != 3 && subTotalFoul2 != 3)
-                && ((disarm1 == disarm2 || disarm2 < disarm1) && disarm1 != 2)
+                && ((disarm1 == disarm2 || disarm2 < disarm1 || disarm2 > disarm1) && disarm1 != 2 && disarm2 != 2)
                 && (subTotalFoul2 != 3 && disarm2 != 2)
                 && (subTotalFoul2 == 0 && disarm2 == 0
                 || (subTotalFoul2 == subTotalFoul1 && disarm2 == disarm1)
@@ -822,7 +822,7 @@ function nextRound() {
             }
             if (inputscore1.value < inputscore2.value
                 && ((subTotalFoul2 > subTotalFoul1 || subTotalFoul2 < subTotalFoul1 || subTotalFoul2 == subTotalFoul1) && subTotalFoul2 != 3 && subTotalFoul1 != 3)
-                && ((disarm1 == disarm2 || disarm2 > disarm1) && disarm2 != 2)
+                && ((disarm1 == disarm2 || disarm2 < disarm1 || disarm2 > disarm1) && disarm1 != 2 && disarm2 != 2)
                 && (subTotalFoul1 != 3 && disarm1 != 2)
                 && (subTotalFoul1 == 0 && disarm1 == 0
                 || (subTotalFoul2 == subTotalFoul1 && disarm2 == disarm1)
@@ -921,8 +921,8 @@ function nextRound() {
                 }
             }
             if (inputscore1.value > inputscore2.value
-                && ((subTotalFoul2 < subTotalFoul1 || subTotalFoul2 > subTotalFoul1) && subTotalFoul1 != 3)
-                && ((disarm1 == disarm2 || disarm2 < disarm1) && disarm1 != 2)
+                && ((subTotalFoul2 < subTotalFoul1 || subTotalFoul2 > subTotalFoul1 || subTotalFoul2 == subTotalFoul1) && subTotalFoul1 != 3 && subTotalFoul2 != 3)
+                && ((disarm1 == disarm2 || disarm2 < disarm1 || disarm2 > disarm1) && disarm1 != 2 && disarm2 != 2)
                 && (subTotalFoul2 != 3 && disarm2 != 2)
                 && (subTotalFoul2 == 0 && disarm2 == 0
                 || (subTotalFoul2 == subTotalFoul1 && disarm2 == disarm1)
@@ -1016,7 +1016,7 @@ function nextRound() {
             }
             if (inputscore1.value < inputscore2.value
                 && ((subTotalFoul2 > subTotalFoul1 || subTotalFoul2 < subTotalFoul1 || subTotalFoul2 == subTotalFoul1) && subTotalFoul2 != 3 && subTotalFoul1 != 3)
-                && ((disarm1 == disarm2 || disarm2 > disarm1) && disarm2 != 2)
+                && ((disarm1 == disarm2 || disarm2 < disarm1 || disarm2 > disarm1) && disarm1 != 2 && disarm2 != 2)
                 && (subTotalFoul1 != 3 && disarm1 != 2)
                 && (subTotalFoul1 == 0 && disarm1 == 0
                 || (subTotalFoul2 == subTotalFoul1 && disarm2 == disarm1)
@@ -1119,7 +1119,7 @@ function nextRound() {
             }
             if (inputscore1.value > inputscore2.value
                 && ((subTotalFoul2 < subTotalFoul1 || subTotalFoul2 > subTotalFoul1 || subTotalFoul2 == subTotalFoul1) && subTotalFoul1 != 3 && subTotalFoul2 != 3)
-                && ((disarm1 == disarm2 || disarm2 < disarm1) && disarm1 != 2)
+                && ((disarm1 == disarm2 || disarm2 < disarm1 || disarm2 > disarm1) && disarm1 != 2 && disarm2 != 2)
                 && (subTotalFoul2 != 3 && disarm2 != 2)
                 && (subTotalFoul2 == 0 && disarm2 == 0
                 || (subTotalFoul2 == subTotalFoul1 && disarm2 == disarm1)
@@ -1213,7 +1213,7 @@ function nextRound() {
             }
             if (inputscore1.value < inputscore2.value
                 && ((subTotalFoul2 > subTotalFoul1 || subTotalFoul2 < subTotalFoul1 || subTotalFoul2 == subTotalFoul1) && subTotalFoul2 != 3 && subTotalFoul1 != 3)
-                && ((disarm1 == disarm2 || disarm2 > disarm1) && disarm2 != 2)
+                && ((disarm1 == disarm2 || disarm2 < disarm1 || disarm2 > disarm1) && disarm1 != 2 && disarm2 != 2)
                 && (subTotalFoul1 != 3 && disarm1 != 2)
                 && (subTotalFoul1 == 0 && disarm1 == 0
                 || (subTotalFoul2 == subTotalFoul1 && disarm2 == disarm1)
