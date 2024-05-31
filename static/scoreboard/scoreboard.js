@@ -1365,7 +1365,7 @@ function runtime() {
             console.log(inputScore2.value);
             startActivate = 0;
             //if foul exist = foul condition
-            if (valueFoulA == 1 || valueFoulB == 1 || valueFoulD == 1 || valueFoulE == 1) {
+            if (valueFoulA == 1 || valueFoulB == 1 || valueFoulD == 1 || valueFoulE == 1 || disarm1 > disarm2 || disarm1 < disarm2) {
                 //determineFoul();
                 console.log("detFoul");
                 if (subTotalFoul1 > subTotalFoul2 && inputscore1.value == inputscore2.value && disarm1 == disarm2) {
