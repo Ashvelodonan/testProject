@@ -1350,6 +1350,7 @@ function runtime() {
         console.log(`${`totalSeconds2`} ${totalSeconds}`);
         if (startActivate == 1 && totalSeconds == 0) {
             playAudio();
+            startActivate = 0;
         }
         if (totalSeconds < 0) {
             console.log(`${`totalSeconds`} ${totalSeconds}`);
@@ -1363,7 +1364,7 @@ function runtime() {
             stopbtn.disabled = true;
             console.log(inputScore1.value);
             console.log(inputScore2.value);
-            startActivate = 0;
+            //startActivate = 0;
             //if foul exist = foul condition
             if (valueFoulA == 1 || valueFoulB == 1 || valueFoulD == 1 || valueFoulE == 1 || disarm1 > disarm2 || disarm1 < disarm2) {
                 //determineFoul();
