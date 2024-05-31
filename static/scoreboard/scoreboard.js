@@ -1368,11 +1368,11 @@ function runtime() {
             if (valueFoulA == 1 || valueFoulB == 1 || valueFoulD == 1 || valueFoulE == 1) {
                 //determineFoul();
                 console.log("detFoul");
-                if (subTotalFoul1 > subTotalFoul2 && inputscore1.value == inputscore2.value) {
+                if (subTotalFoul1 > subTotalFoul2 && inputscore1.value == inputscore2.value && disarm1 > disarm2) {
                     console.log(`BLUE WINS from foul`);
                     alert(`BLUE WINS from foul`);
                 }
-                if (subTotalFoul1 < subTotalFoul2 && inputscore1.value == inputscore2.value) {
+                if (subTotalFoul1 < subTotalFoul2 && inputscore1.value == inputscore2.value && disarm1 < disarm2) {
                     console.log(`RED WINS from foul`);
                     alert(`RED WINS from foul`);
                 }
