@@ -616,10 +616,15 @@ function nextRound() {
     } //WinRedORBlue
     if (subTotalFoul2 == 3 || disarm2 == 2 ||
         (inputscore1.value > inputscore2.value && subTotalFoul1 != 3 && disarm1 != 2 &&
-            (subTotalFoul1 < subTotalFoul2 || disarm1 < disarm2 ||
-                subTotalFoul1 > subTotalFoul2 || disarm1 > disarm2)) ||
-        (inputscore1.value > inputscore2.value && subTotalFoul1 != 3 && disarm1 != 2 &&
-            (subTotalFoul1 == subTotalFoul2 && disarm1 == disarm2)) ||
+            ((subTotalFoul1 == subTotalFoul2 && disarm1 == disarm2) ||
+			(subTotalFoul1 == subTotalFoul2 && disarm1 > disarm2) ||
+			(subTotalFoul1 == subTotalFoul2 && disarm1 < disarm2) ||
+			(subTotalFoul1 > subTotalFoul2 && disarm1 == disarm2) ||
+			(subTotalFoul1 < subTotalFoul2 && disarm1 == disarm2) ||
+			(subTotalFoul1 < subTotalFoul2 && disarm1 < disarm2) ||
+            (subTotalFoul1 > subTotalFoul2 && disarm1 > disarm2) ||
+			(subTotalFoul1 < subTotalFoul2 && disarm1 > disarm2) ||
+			(subTotalFoul1 > subTotalFoul2 && disarm1 < disarm2))) ||
         (inputscore1.value == inputscore2.value &&
             ((suddenDeathScoreA > suddenDeathScoreB && subTotalFoul1 == subTotalFoul2 && disarm1 == disarm2) ||
                 (subTotalFoul1 < subTotalFoul2 && disarm1 < disarm2) ||
@@ -637,11 +642,16 @@ function nextRound() {
         console.log("winRed += 1;");
     }
     if (subTotalFoul1 == 3 || disarm1 == 2 ||
-        (inputscore1.value < inputscore2.value && subTotalFoul2 != 3 && disarm2 != 2 &&
-            (subTotalFoul1 < subTotalFoul2 || disarm1 < disarm2 ||
-                subTotalFoul1 > subTotalFoul2 || disarm1 > disarm2)) ||
-        (inputscore1.value < inputscore2.value && subTotalFoul2 != 3 && disarm2 != 2 &&
-            (subTotalFoul2 == subTotalFoul1 && disarm2 == disarm1)) ||
+        (inputscore1.value < inputscore2.value && subTotalFoul1 != 3 && disarm1 != 2 &&
+            ((subTotalFoul1 == subTotalFoul2 && disarm1 == disarm2) ||
+			(subTotalFoul1 == subTotalFoul2 && disarm1 > disarm2) ||
+			(subTotalFoul1 == subTotalFoul2 && disarm1 < disarm2) ||
+			(subTotalFoul1 > subTotalFoul2 && disarm1 == disarm2) ||
+			(subTotalFoul1 < subTotalFoul2 && disarm1 == disarm2) ||
+			(subTotalFoul1 < subTotalFoul2 && disarm1 < disarm2) ||
+            (subTotalFoul1 > subTotalFoul2 && disarm1 > disarm2) ||
+			(subTotalFoul1 < subTotalFoul2 && disarm1 > disarm2) ||
+			(subTotalFoul1 > subTotalFoul2 && disarm1 < disarm2))) ||
         (inputscore1.value == inputscore2.value &&
             ((suddenDeathScoreA < suddenDeathScoreB && subTotalFoul1 == subTotalFoul2 && disarm1 == disarm2) ||
                 (subTotalFoul1 > subTotalFoul2 && disarm1 > disarm2) ||
@@ -2295,10 +2305,15 @@ function determineWinner() {
     }
     if (subTotalFoul2 == 3 || disarm2 == 2 ||
         (inputscore1.value > inputscore2.value && subTotalFoul1 != 3 && disarm1 != 2 &&
-            (subTotalFoul1 < subTotalFoul2 || disarm1 < disarm2 ||
-                subTotalFoul1 > subTotalFoul2 || disarm1 > disarm2)) ||
-        (inputscore1.value > inputscore2.value && subTotalFoul1 != 3 && disarm1 != 2 &&
-            (subTotalFoul1 == subTotalFoul2 && disarm1 == disarm2)) ||
+            ((subTotalFoul1 == subTotalFoul2 && disarm1 == disarm2) ||
+			(subTotalFoul1 == subTotalFoul2 && disarm1 > disarm2) ||
+			(subTotalFoul1 == subTotalFoul2 && disarm1 < disarm2) ||
+			(subTotalFoul1 > subTotalFoul2 && disarm1 == disarm2) ||
+			(subTotalFoul1 < subTotalFoul2 && disarm1 == disarm2) ||
+			(subTotalFoul1 < subTotalFoul2 && disarm1 < disarm2) ||
+            (subTotalFoul1 > subTotalFoul2 && disarm1 > disarm2) ||
+			(subTotalFoul1 < subTotalFoul2 && disarm1 > disarm2) ||
+			(subTotalFoul1 > subTotalFoul2 && disarm1 < disarm2))) ||
         (inputscore1.value == inputscore2.value &&
             ((suddenDeathScoreA > suddenDeathScoreB && subTotalFoul1 == subTotalFoul2 && disarm1 == disarm2) ||
                 (subTotalFoul1 < subTotalFoul2 && disarm1 < disarm2) ||
@@ -2322,11 +2337,16 @@ function determineWinner() {
         nextbtn.disabled = false;
         
     } else if (subTotalFoul1 == 3 || disarm1 == 2 ||
-        (inputscore1.value < inputscore2.value && subTotalFoul2 != 3 && disarm2 != 2 &&
-            (subTotalFoul1 < subTotalFoul2 || disarm1 < disarm2 ||
-                subTotalFoul1 > subTotalFoul2 || disarm1 > disarm2)) ||
-        (inputscore1.value < inputscore2.value && subTotalFoul2 != 3 && disarm2 != 2 &&
-            (subTotalFoul2 == subTotalFoul1 && disarm2 == disarm1)) ||
+        (inputscore1.value < inputscore2.value && subTotalFoul1 != 3 && disarm1 != 2 &&
+            ((subTotalFoul1 == subTotalFoul2 && disarm1 == disarm2) ||
+			(subTotalFoul1 == subTotalFoul2 && disarm1 > disarm2) ||
+			(subTotalFoul1 == subTotalFoul2 && disarm1 < disarm2) ||
+			(subTotalFoul1 > subTotalFoul2 && disarm1 == disarm2) ||
+			(subTotalFoul1 < subTotalFoul2 && disarm1 == disarm2) ||
+			(subTotalFoul1 < subTotalFoul2 && disarm1 < disarm2) ||
+            (subTotalFoul1 > subTotalFoul2 && disarm1 > disarm2) ||
+			(subTotalFoul1 < subTotalFoul2 && disarm1 > disarm2) ||
+			(subTotalFoul1 > subTotalFoul2 && disarm1 < disarm2))) ||
         (inputscore1.value == inputscore2.value &&
             ((suddenDeathScoreA < suddenDeathScoreB && subTotalFoul1 == subTotalFoul2 && disarm1 == disarm2) ||
                 (subTotalFoul1 > subTotalFoul2 && disarm1 > disarm2) ||
